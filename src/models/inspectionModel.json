@@ -1,0 +1,50 @@
+[
+    {
+        "type": "Schade",
+        "location": "Groningen",
+        "subType": "Geweld",
+        "newDamage": true,
+        "date": "2025-04-02",
+        "requiresImmediateAction": true,
+        "description": "Er is een raam aan de voorzijde van het gebouw ingegooid.",
+        "photos": ["ruit-ingegooid-1.jpg", "ruit-ingegooid-2.jpg"]
+    },
+    {
+        "type": "Schade",
+        "location": "Amsterdam",
+        "subType": "Slijtage",
+        "newDamage": false,
+        "date": "2025-02-12",
+        "requiresImmediateAction": false,
+        "description": "Tapijt voor de deur heeft slijtage.",
+        "photos": ["slijtage-deurmat-1.jpg"]
+    },
+    {
+        "type": "Achterstallig onderhoud",
+        "location": "Den Helder",
+        "subType": "Houtrot",
+        "requiresImmediateAction": false,
+        "costEstimate": "€500 - €1500",
+        "photos": ["houtrot-kozijn-1.jpg", "houtrot-kozijn-2.jpg"]
+    },
+    {
+        "type": "Inspectie technische installatie",
+        "location": "Brussel",
+        "subType": "Luchtverversing",
+        "reportedMalfunctions": "Filters functioneren niet",
+        "testProcedurePdf": "dummy.pdf",
+        "approved": true,
+        "remarks": "Filters zijn vol en moeten vervangen worden.",
+        "photos": ["filters-vol-1.jpg"]
+    },
+    {
+        "type": "Inventarisering modificatie",
+        "existingSituationPdf": "dummy.pdf",
+        "location": "Appingedam",
+        "performedBy": "Huurder",
+        "description": "Gemeenschappelijke tafel verwijderen.",
+        "requiredAction": "Laten verwijderen",
+        "remarks": "Tafel heeft gevaarlijke punten.",
+        "photos": ["tafel-puntig-1.jpg"]
+    }
+]
