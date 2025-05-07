@@ -1,4 +1,4 @@
-class Inspection {
+export default class Inspection {
     constructor(
         location,
         type,
@@ -31,5 +31,12 @@ class Inspection {
         this.remarks = remarks;
         this.existingSituationPdf = existingSituationPdf;
         this.performedBy = performedBy;
+    }
+
+    getDate() {
+        if(this.date) {
+            return (new Date(this.date)).toLocaleDateString();
+        }
+        return "Datum onbekend";
     }
 }

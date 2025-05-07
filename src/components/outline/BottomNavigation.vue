@@ -20,7 +20,3 @@
         </v-btn>
     </v-bottom-navigation>
 </template>
-
-<script setup>
-
-</script>

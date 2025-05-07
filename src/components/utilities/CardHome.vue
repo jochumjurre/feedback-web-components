@@ -1,8 +1,8 @@
 <template>
-    <Button class="container">
-        <v-icon size="x-large">mdi-bell</v-icon>
+    <button class="container">
+        <v-icon size="x-large">{{ prependIcon }}</v-icon>
         <p class="mt-4">{{ title }}</p>
-    </Button>
+    </button>
 </template>
 
 <script setup>
@@ -17,6 +17,11 @@ defineProps({
         type: String,
         required: true,
     },
+    prependIcon: {
+        type: String,
+        required: false,
+        default: 'mdi-bell',
+    }
 })
 </script>
 
