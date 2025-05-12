@@ -1,17 +1,17 @@
 <template>
     <div>
         <h3>Selecteer een inspectie:</h3>
-
         <v-radio-group
-            v-model="localSelectedInspection"
+            v-model="modelValue"
             color="secondary"
             column
         >
+            <!-- Generate radio buttons from inspectionsList -->
             <v-radio
-            v-for="(inspection, index) in inspectionsList"
-            :key="index"
-            :label="`${inspection.type} (${inspection.location})`"
-            :value="index"
+                v-for="(inspection, index) in inspectionsList"
+                :key="index"
+                :label="`${inspection.type} (${inspection.location})`"
+                :value="index"
             />
         </v-radio-group>
     </div>
@@ -20,35 +20,33 @@
 <script>
 export default {
     props: {
+        // Array of inspections (passed from the InspectionDisplay-component).
         inspectionsList: {
             type: Array,
             required: true,
         },
-        selectedInspection: {
+        // Selected inspection index (passed from the InspectionDisplay-component).
+        selectedIndex: {
             type: Number,
             default: null,
         },
     },
-    data() {
-        return {
-            localSelectedInspection: this.selectedInspection,
-        };
-    },
-    watch: {
-        selectedInspection(newVal) {
-            this.localSelectedInspection = newVal;
-        },
-        localSelectedInspection(newVal) {
-            this.$emit('update:selectedInspection', newVal);
+    computed: {
+        modelValue: {
+            // Get (index of) selected inspection.
+            get() {
+                return this.selectedIndex;
+            },
+            // Update InspectionDisplay-component with new index
+            set(newVal) {
+                this.$emit('update:selectedIndex', newVal);
+            },
         },
     },
     mounted() {
-        if (
-            this.inspectionsList.length > 0 &&
-            (this.selectedInspection === null || this.selectedInspection === undefined)
-        ) {
-            this.localSelectedInspection = 0;
-            this.$emit('update:selectedInspection', 0);
+        // Default to first inspection if none is selected
+        if (this.selectedIndex == null && this.inspectionsList.length > 0) {
+            this.$emit('update:selectedIndex', 0);
         }
     },
 };

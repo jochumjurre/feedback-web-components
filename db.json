@@ -11,10 +11,20 @@
     },
     {
         "type": "Schade",
+        "location": "Maastricht",
+        "subType": "Calamiteit",
+        "newDamage": false,
+        "date": "2023-08-04",
+        "requiresImmediateAction": true,
+        "description": "Veel schade aan woning na brand.",
+        "photos": ["brand-woning-1.jpg", "brand-woning-2.jpg"]
+    },
+    {
+        "type": "Schade",
         "location": "Amsterdam",
         "subType": "Slijtage",
         "newDamage": false,
-        "date": "2025-02-12",
+        "date": "2024-02-12",
         "requiresImmediateAction": false,
         "description": "Tapijt voor de deur heeft slijtage.",
         "photos": ["slijtage-deurmat-1.jpg"]

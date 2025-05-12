@@ -1,26 +1,27 @@
 <template>
     <div>
+        <!-- Allows selection of an inspection -->
         <InspectionSelector
-        :inspectionsList="inspectionsList"
-        v-model:selectedInspection="selectedInspection"
+            :inspectionsList="inspectionsList"
+            v-model:selectedIndex="selectedIndex"
         />
 
+        <!-- Display details of the selected inspection -->
         <v-card v-if="this.activeInspection" class="mx-auto">
             <v-carousel
-            v-if="activeInspection.photos && activeInspection.photos.length"
-            v-model="carouselIndex"
-            height="240px"
-            :show-arrows="activeInspection.photos.length > 1"
-            :hide-delimiters="activeInspection.photos.length <= 1"
+                v-if="activeInspection.photos && activeInspection.photos.length"
+                v-model="carouselIndex"
+                :show-arrows="activeInspection.photos.length > 1"
+                :hide-delimiters="activeInspection.photos.length <= 1"
+                height="240px"
             >
-            <v-carousel-item
-                v-for="(photo, index) in activeInspection.photos"
-                :key="index"
-                :src="getPhotoUrl(photo)"
-                cover
-            />
+                <v-carousel-item
+                    v-for="(photo, index) in activeInspection.photos"
+                    :key="index"
+                    :src="getPhotoUrl(photo)"
+                    cover
+                />
             </v-carousel>
-
 
             <v-card-title>
                 {{ this.activeInspection.type }}
@@ -68,17 +69,33 @@ import InspectionService from '@/services/InspectionService.js';
 import Inspection from '@/Inspection.js';
 
 export default {
-    data() {
-        return {
-            inspectionsList: [],
-            selectedInspection: 0,
-            carouselIndex: 0,
-        }
-    },
     components: {
         InspectionSelector,
         InspectionService,
         Inspection,
+    },
+    data() {
+        return {
+            inspectionsList: [],
+            selectedIndex: 0,
+            carouselIndex: 0,
+        }
+    },
+    computed: {
+        // Return actual data from selected inspection.
+        activeInspection() {
+            if (this.inspectionsList.length === 0) {
+                return null;
+            };
+
+            return this.inspectionsList[this.selectedIndex];
+        },
+    },
+    watch: {
+        // Always start image carousel on first image.
+        selectedIndex(newVal) {
+            this.carouselIndex = 0;
+        },
     },
     mounted() {
         // Create Inspection class instances for each inspection and put them in an array
@@ -99,31 +116,18 @@ export default {
                     inspection.approved,
                     inspection.remarks,
                     inspection.existingSituationPdf,
-                    inspection.performedBy
+                    inspection.performedBy,
                 ));
             };
+        }).catch((error) => {
+            console.error('Error loading inspections:', error);
         });
     },
     methods: {
         // Return local URL of picture
         getPhotoUrl(filename) {
             return `/images/${filename}`;
-        }
+        },
     },
-    computed: {
-        activeInspection() {
-            // Return data from selected inspection.
-            if (this.inspectionsList.length === 0) {
-                return null;
-            }
-
-            return this.inspectionsList[this.selectedInspection];
-        }
-    },
-    watch: {
-        selectedInspection(newVal) {
-            this.carouselIndex = 0;
-        }
-    }
 }
 </script>

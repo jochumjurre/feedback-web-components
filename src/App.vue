@@ -2,16 +2,24 @@
     <v-app class="bg-white pt-12 mb-16">
         <StatusBar />
         <MainHeader />
-
         <v-container>
-            <v-row justify="center" class="mt-16 mb-4">
-                <v-col cols="12" md="8" xl="4">
-                    <div class="cardContainer mb-8">
-                        <CardHome title="Scheduled" prepend-icon="mdi-bookmark-outline" color="secondary"/>
-                        <CardHome title="Completed" prepend-icon="mdi-check-circle-outline" color="secondary"/>
-                        <CardHome title="Knowledge base" prepend-icon="mdi-dots-grid" color="secondary"/>
-                        <CardHome title="Settings" prepend-icon="mdi-cog-outline" color="secondary"/>
-                    </div>
+            <!-- Content area: row & column to get a responsive width -->
+            <v-row>
+                <v-col cols="12" sm="8" md="6" lg="4" class="mx-auto">
+                    <!-- Menu buttons -->
+                    <v-row class="mt-16 mb-8">
+                        <v-col
+                        v-for="(item) in menuItems"
+                        :key="item.title"
+                        cols="6"
+                        >
+                            <CardHome
+                            :title="item.title"
+                            :prepend-icon="item.icon"
+                            color="secondary"/>
+                        </v-col>
+                    </v-row>
+                    
                     <InspectionDisplay />
                 </v-col>
             </v-row>
@@ -34,15 +42,17 @@ export default {
         MainHeader,
         BottomNavigation,
         InspectionDisplay,
-    }
-
-}
+    },
+    data() {
+        return {
+            // Array of navigation cards
+            menuItems: [
+                { title: 'Scheduled', icon: 'mdi-bookmark-outline' },
+                { title: 'Knowledge base', icon: 'mdi-dots-grid' },
+                { title: 'Completed', icon: 'mdi-check-circle-outline' },
+                { title: 'Settings', icon: 'mdi-cog-outline' },
+            ],
+        };
+    },
+};
 </script>
-
-<style>
-    .cardContainer {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-    }
-</style>
