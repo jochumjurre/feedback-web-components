@@ -8,16 +8,18 @@
         >
             <!-- Generate radio buttons from inspectionsList -->
             <v-radio
-                v-for="(inspection, index) in inspectionsList"
+                v-for="(inspection, index) in sortedInspections"
                 :key="index"
-                :label="`${inspection.type} (${inspection.location})`"
-                :value="index"
+                :label="`${inspection.type} ${inspection.location} (${inspection.getDate()})`"
+                :value="inspectionsList.indexOf(inspection)"
             />
         </v-radio-group>
     </div>
 </template>
 
 <script>
+import Inspection from '@/Inspection.js';
+
 export default {
     props: {
         // Array of inspections (passed from the InspectionDisplay-component).
@@ -41,6 +43,10 @@ export default {
             set(newVal) {
                 this.$emit('update:selectedIndex', newVal);
             },
+        },
+        // Sorted version of inspectionsList (by date descending)
+        sortedInspections() {
+            return [...this.inspectionsList].sort((a, b) => new Date(b.date) - new Date(a.date));
         },
     },
     mounted() {

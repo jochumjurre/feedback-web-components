@@ -3,10 +3,10 @@
         <StatusBar />
         <MainHeader />
         <v-container>
-            <!-- Content area: row & column to get a responsive width -->
+            <!-- Use Vuetify's <v-row> & <v-col> to achieve a responsive content area -->
             <v-row>
                 <v-col cols="12" sm="8" md="6" lg="4" class="mx-auto">
-                    <!-- Menu buttons -->
+                    <!-- Generate menu buttons -->
                     <v-row class="mt-16 mb-8">
                         <v-col
                         v-for="(item) in menuItems"
@@ -20,6 +20,7 @@
                         </v-col>
                     </v-row>
                     
+                    <!-- Inspectinos -->
                     <InspectionDisplay />
                 </v-col>
             </v-row>
