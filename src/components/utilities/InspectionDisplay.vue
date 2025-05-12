@@ -56,8 +56,8 @@
                         {{ activeInspection.approved ? 'Ja' : 'Nee' }}
                     </v-chip>
                 </p>
-                <p v-show="this.activeInspection.testProcedurePdf"><span class="font-weight-medium">Download testprocedure (.PDF): </span>{{ this.activeInspection.testProcedurePdf }}</p>
-                <p v-show="this.activeInspection.existingSituationPdf"><span class="font-weight-medium">Testprocedure (.PDF): </span>{{ this.activeInspection.existingSituationPdf }}</p>
+                <p v-show="this.activeInspection.testProcedurePdf"><span class="font-weight-medium">Download testprocedure (.PDF): </span><a :href="getPdfUrl(activeInspection.testProcedurePdf)">{{ this.activeInspection.testProcedurePdf }}</a></p>
+                <p v-show="this.activeInspection.existingSituationPdf"><span class="font-weight-medium">Testprocedure (.PDF): </span><a :href="getPdfUrl(activeInspection.existingSituationPdf)">{{ this.activeInspection.existingSituationPdf }}</a></p>
             </v-card-text>
         </v-card>
     </div>
@@ -127,6 +127,13 @@ export default {
         // Return local URL of picture
         getPhotoUrl(filename) {
             return `/images/${filename}`;
+        },
+        // Return local url of PDF document
+        getPdfUrl(filename) {
+            // Check if there's a valid filename
+            if (!filename) return '';
+
+            return new URL(`../../assets/documents/${filename}`, import.meta.url).href;
         },
     },
 }
