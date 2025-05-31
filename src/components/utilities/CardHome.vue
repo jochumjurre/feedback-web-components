@@ -1,13 +1,14 @@
 <template>
-    <button
+    <router-link
         :class="isHovered ? 'elevation-4' : 'elevation-2'"
-        @mouseover="this.isHovered = true"
-        @mouseleave="this.isHovered = false"
-        class="d-flex flex-column ga-4 align-center justify-center pt-8 pb-8 w-100 border rounded-lg bg-white text-center"
+        :to="locationUrl"
+        @mouseover="isHovered = true"
+        @mouseleave="isHovered = false"
+        class="d-flex flex-column ga-4 align-center justify-center pt-8 pb-8 w-100 border rounded-lg bg-white text-center navigation-card"
     >
         <v-icon size="x-large">{{ prependIcon }}</v-icon>
         <p>{{ title }}</p>
-    </button>
+    </router-link>
 </template>
 
 <script>
@@ -22,12 +23,24 @@ export default {
             required: false,
             default: 'mdi-bell',
         },
+        locationUrl: {
+            type: String,
+            required: true,
+        }
     },
     data() {
         return {
-            // Track hover state
             isHovered: false,
         };
     },
 };
 </script>
+
+<style>
+.navigation-card {
+    text-decoration: none;
+}
+.navigation-card:hover {
+    text-decoration: underline;
+}
+</style>

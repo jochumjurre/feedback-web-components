@@ -1,63 +1,58 @@
 <template>
     <div>
-        <!-- Allows selection of an inspection -->
         <InspectionSelector
             :inspectionsList="inspectionsList"
-            v-model:selectedIndex="selectedIndex"
+            v-model:selectedInspectionIndex="selectedInspectionIndex"
+            v-model:selectedFindingIndex="selectedFindingIndex"
         />
-
-        <!-- Display details of the selected inspection -->
-        <v-card v-if="this.activeInspection" class="mx-auto">
+        <v-card v-if="activeFinding" class="mx-auto">
             <v-carousel
-                v-if="activeInspection.photos && activeInspection.photos.length"
+                v-if="activeFinding.photos && activeFinding.photos.length"
                 v-model="carouselIndex"
-                :show-arrows="activeInspection.photos.length > 1"
-                :hide-delimiters="activeInspection.photos.length <= 1"
+                :show-arrows="activeFinding.photos.length > 1"
+                :hide-delimiters="activeFinding.photos.length <= 1"
                 height="240px"
             >
                 <v-carousel-item
-                    v-for="(photo, index) in activeInspection.photos"
+                    v-for="(photo, index) in activeFinding.photos"
                     :key="index"
                     :src="getPhotoUrl(photo)"
                     cover
                 />
             </v-carousel>
-
             <v-card-title>
-                {{ this.activeInspection.type }}
+                {{ activeFinding.type }}
             </v-card-title>
-
             <v-card-subtitle>
-                <v-icon icon="mdi-map-marker"></v-icon> {{ this.activeInspection.location }} - <v-icon icon="mdi-calendar-blank"></v-icon> {{ this.activeInspection.getDate() }}
+                <v-icon icon="mdi-map-marker"></v-icon> {{ activeInspection.location }} - <v-icon icon="mdi-calendar-blank"></v-icon> {{ activeInspection.getDate() }}
             </v-card-subtitle>
-
             <v-card-text class="text-body-1">
-                <p v-show="this.activeInspection.newDamage !== undefined" class="">
+                <p v-show="activeFinding.newDamage !== undefined" class="">
                     <span class="font-weight-medium">Nieuwe schade: </span>
-                    <v-chip :color="activeInspection.newDamage ? 'success' : 'error'" dark>
-                        {{ this.activeInspection.newDamage ? 'Ja' : 'Nee' }}
+                    <v-chip :color="activeFinding.newDamage ? 'success' : 'error'" dark>
+                        {{ activeFinding.newDamage ? 'Ja' : 'Nee' }}
                     </v-chip>
                 </p>
-                <p v-show="this.activeInspection.subType"><span class="font-weight-medium">Sub-type: </span>{{ this.activeInspection.subType }}</p>
-                <p v-show="this.activeInspection.description"><span class="font-weight-medium">Omschrijving: </span>{{ this.activeInspection.description }}</p>
-                <p v-show="this.activeInspection.reportedMalfunctions"><span class="font-weight-medium">Gemelde storingen: </span>{{ this.activeInspection.reportedMalfunctions }}</p>
-                <p v-show="this.activeInspection.requiresImmediateAction !== undefined">
+                <p v-show="activeFinding.subType"><span class="font-weight-medium">Sub-type: </span>{{ activeFinding.subType }}</p>
+                <p v-show="activeFinding.description"><span class="font-weight-medium">Omschrijving: </span>{{ activeFinding.description }}</p>
+                <p v-show="activeFinding.reportedMalfunctions"><span class="font-weight-medium">Gemelde storingen: </span>{{ activeFinding.reportedMalfunctions }}</p>
+                <p v-show="activeFinding.requiresImmediateAction !== undefined">
                     <span class="font-weight-medium">Acute actie vereist: </span>
-                    <v-chip :color="activeInspection.requiresImmediateAction ? 'success' : 'error'" dark>
-                        {{ this.activeInspection.requiresImmediateAction ? 'Ja' : 'Nee' }}
+                    <v-chip :color="activeFinding.requiresImmediateAction ? 'success' : 'error'" dark>
+                        {{ activeFinding.requiresImmediateAction ? 'Ja' : 'Nee' }}
                     </v-chip>
                 </p>
-                <p v-show="this.activeInspection.costEstimate"><span class="font-weight-medium">Kostenindicatie: </span>{{ this.activeInspection.costEstimate }}</p>
-                <p v-show="this.activeInspection.performedBy"><span class="font-weight-medium">Uitgevoerd door: </span>{{ this.activeInspection.performedBy }}</p>
-                <p v-show="this.activeInspection.remarks"><span class="font-weight-medium">Opmerkingen: </span>{{ this.activeInspection.remarks }}</p>
-                <p v-show="this.activeInspection.approved !== undefined">
+                <p v-show="activeFinding.costEstimate"><span class="font-weight-medium">Kostenindicatie: </span>{{ activeFinding.costEstimate }}</p>
+                <p v-show="activeFinding.performedBy"><span class="font-weight-medium">Uitgevoerd door: </span>{{ activeFinding.performedBy }}</p>
+                <p v-show="activeFinding.remarks"><span class="font-weight-medium">Opmerkingen: </span>{{ activeFinding.remarks }}</p>
+                <p v-show="activeFinding.approved !== undefined">
                     <span class="font-weight-medium">Goedgekeurd: </span>
-                    <v-chip :color="activeInspection.approved ? 'success' : 'error'" dark>
-                        {{ activeInspection.approved ? 'Ja' : 'Nee' }}
+                    <v-chip :color="activeFinding.approved ? 'success' : 'error'" dark>
+                        {{ activeFinding.approved ? 'Ja' : 'Nee' }}
                     </v-chip>
                 </p>
-                <p v-show="this.activeInspection.testProcedurePdf"><span class="font-weight-medium">Download testprocedure (.PDF): </span><a :href="getPdfUrl(activeInspection.testProcedurePdf)">{{ this.activeInspection.testProcedurePdf }}</a></p>
-                <p v-show="this.activeInspection.existingSituationPdf"><span class="font-weight-medium">Testprocedure (.PDF): </span><a :href="getPdfUrl(activeInspection.existingSituationPdf)">{{ this.activeInspection.existingSituationPdf }}</a></p>
+                <p v-show="activeFinding.testProcedurePdf"><span class="font-weight-medium">Download testprocedure (.PDF): </span><a :href="getPdfUrl(activeFinding.testProcedurePdf)">{{ activeFinding.testProcedurePdf }}</a></p>
+                <p v-show="activeFinding.existingSituationPdf"><span class="font-weight-medium">Testprocedure (.PDF): </span><a :href="getPdfUrl(activeFinding.existingSituationPdf)">{{ activeFinding.existingSituationPdf }}</a></p>
             </v-card-text>
         </v-card>
     </div>
@@ -67,6 +62,7 @@
 import InspectionSelector from  '@/components/utilities/InspectionSelector.vue';
 import InspectionService from '@/services/InspectionService.js';
 import Inspection from '@/Inspection.js';
+import Finding from '@/Finding';
 
 export default {
     components: {
@@ -77,48 +73,55 @@ export default {
     data() {
         return {
             inspectionsList: [],
-            selectedIndex: 0,
+            selectedInspectionIndex: 0,
+            selectedFindingIndex: 0,
             carouselIndex: 0,
         }
     },
     computed: {
-        // Return actual data from selected inspection.
         activeInspection() {
-            if (this.inspectionsList.length === 0) {
-                return null;
-            };
-
-            return this.inspectionsList[this.selectedIndex];
+            if (this.inspectionsList.length === 0) return null;
+            return this.inspectionsList[this.selectedInspectionIndex];
         },
+        activeFinding() {
+            if (!this.activeInspection || !this.activeInspection.findings) return null;
+            return this.activeInspection.findings[this.selectedFindingIndex] || null;
+        }
     },
     watch: {
         // Always start image carousel on first image.
-        selectedIndex(newVal) {
+        selectedInspectionIndex(newVal) {
             this.carouselIndex = 0;
-        },
+            this.selectedFindingIndex = 0;
+        }
     },
     mounted() {
-        // Create Inspection class instances for each inspection and put them in an array
-        InspectionService.load().then((response)=>{
-            for (let inspection of response.data) {
+        InspectionService.load(false).then((response) => {
+            const inspections = response.default;
+
+            for (let inspection of inspections) {
+                const findings = inspection.findings.map(finding => new Finding(
+                    finding.type,
+                    finding.subType,
+                    finding.newDamage,
+                    finding.requiresImmediateAction,
+                    finding.description,
+                    finding.photos,
+                    finding.costEstimate,
+                    finding.reportedMalfunctions,
+                    finding.testProcedurePdf,
+                    finding.approved,
+                    finding.remarks,
+                    finding.existingSituationPdf,
+                    finding.performedBy,
+                ));
+
                 this.inspectionsList.push(new Inspection(
                     inspection.location,
-                    inspection.type,
-                    inspection.subType,
-                    inspection.newDamage,
                     inspection.date,
-                    inspection.requiresImmediateAction,
-                    inspection.description,
-                    inspection.photos,
-                    inspection.costEstimate,
-                    inspection.reportedMalfunctions,
-                    inspection.testProcedurePdf,
-                    inspection.approved,
-                    inspection.remarks,
-                    inspection.existingSituationPdf,
-                    inspection.performedBy,
+                    findings
                 ));
-            };
+            }
         }).catch((error) => {
             console.error('Error loading inspections:', error);
         });

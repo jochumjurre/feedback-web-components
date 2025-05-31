@@ -1,60 +1,201 @@
 [
     {
-        "type": "Schade",
-        "location": "Groningen",
-        "subType": "Geweld",
-        "newDamage": true,
-        "date": "2025-04-02",
-        "requiresImmediateAction": true,
-        "description": "Er is een raam aan de voorzijde van het gebouw ingegooid.",
-        "photos": ["ruit-ingegooid-1.jpg", "ruit-ingegooid-2.jpg"]
+        "location": "Oude Pekela",
+        "date": "2024-01-17",
+
+        "findings": [
+            {
+                "type": "Schade",
+                "subType": "Geweld",
+                "newDamage": true,
+                "requiresImmediateAction": true,
+                "description": "Er is een raam aan de voorzijde van het gebouw ingegooid.",
+                "photos": ["ruit-ingegooid-1.jpg", "ruit-ingegooid-2.jpg"]
+            },
+            {
+                "type": "Schade",
+                "subType": "Calamiteit",
+                "newDamage": false,
+                "requiresImmediateAction": true,
+                "description": "Veel schade aan woning na brand.",
+                "photos": ["brand-woning-1.jpg", "brand-woning-2.jpg"]
+            },
+            {
+                "type": "Schade",
+                "subType": "Slijtage",
+                "newDamage": false,
+                "requiresImmediateAction": false,
+                "description": "Tapijt voor de deur heeft slijtage.",
+                "photos": ["slijtage-deurmat-1.jpg"]
+            },
+            {
+                "type": "Achterstallig onderhoud",
+                "subType": "Houtrot",
+                "requiresImmediateAction": false,
+                "costEstimate": "€500 - €1500",
+                "photos": ["houtrot-kozijn-1.jpg", "houtrot-kozijn-2.jpg"]
+            }
+        ]
     },
     {
-        "type": "Schade",
-        "location": "Maastricht",
-        "subType": "Calamiteit",
-        "newDamage": false,
-        "date": "2023-08-04",
-        "requiresImmediateAction": true,
-        "description": "Veel schade aan woning na brand.",
-        "photos": ["brand-woning-1.jpg", "brand-woning-2.jpg"]
+        "location": "Harkema",
+        "date": "2024-10-12",
+
+        "findings": [
+            {
+                "type": "Inspectie technische installatie",
+                "subType": "Luchtverversing",
+                "reportedMalfunctions": "Filters functioneren niet",
+                "testProcedurePdf": "dummy.pdf",
+                "approved": true,
+                "remarks": "Filters zijn vol en moeten vervangen worden.",
+                "photos": ["filters-vol-1.jpg"]
+            },
+            {
+                "type": "Inventarisering modificatie",
+                "existingSituationPdf": "dummy.pdf",
+                "performedBy": "Huurder",
+                "description": "Gemeenschappelijke tafel verwijderen.",
+                "requiredAction": "Laten verwijderen",
+                "remarks": "Tafel heeft gevaarlijke punten.",
+                "photos": ["tafel-puntig-1.jpg"]
+            },
+            {
+                "type": "Achterstallig onderhoud",
+                "subType": "Leidingwerk",
+                "requiresImmediateAction": true,
+                "costEstimate": "€800",
+                "photos": ["radiator-verplaatsen-1.jpg"]
+            },
+            {
+                "type": "Achterstallig onderhoud",
+                "subType": "Beveiliging",
+                "requiresImmediateAction": false,
+                "costEstimate": "€0 - 500",
+                "photos": ["beveiligings-systeem-montage-1.jpg"]
+            }
+        ]
     },
     {
-        "type": "Schade",
-        "location": "Amsterdam",
-        "subType": "Slijtage",
-        "newDamage": false,
-        "date": "2024-02-12",
-        "requiresImmediateAction": false,
-        "description": "Tapijt voor de deur heeft slijtage.",
-        "photos": ["slijtage-deurmat-1.jpg"]
+        "location": "Gasselternijveenschemond",
+        "date": "2024-08-22",
+
+        "findings": [
+            {
+                "type": "Inspectie technische installatie",
+                "subType": "Elektra",
+                "reportedMalfunctions": "Lamp werkt niet meer",
+                "testProcedurePdf": "dummy.pdf",
+                "approved": true,
+                "remarks": "Gebroken gloeilamp bolletje vervangen door LED",
+                "photos": ["lamp-gang-kapot-1.jpg"]
+            },
+            {
+                "type": "Inventarisering modificatie",
+                "existingSituationPdf": "dummy.pdf",
+                "performedBy": "Huurder",
+                "description": "Plaatsen van warmtepomp.",
+                "requiredAction": "Trillingsdempers plaatsen",
+                "remarks": "Trillingsdempers ontbreken waardoor warmtepomp niet gebruikt kan worden.",
+                "photos": ["warmtepomp-trillingsdempers-1.jpg"]
+            },
+            {
+                "type": "Achterstallig onderhoud",
+                "subType": "Leidingwerk",
+                "requiresImmediateAction": true,
+                "costEstimate": "€0 - 500",
+                "photos": ["lekkage-dakwerk-1.jpg"]
+            },
+            {
+                "type": "Schade",
+                "subType": "Anders",
+                "newDamage": false,
+                "requiresImmediateAction": false,
+                "description": "Tuinhek omgewaaid na hevige storm.",
+                "photos": ["hek-omgewaaid-1.jpg"]
+            }
+        ]
     },
     {
-        "type": "Achterstallig onderhoud",
-        "location": "Den Helder",
-        "subType": "Houtrot",
-        "requiresImmediateAction": false,
-        "costEstimate": "€500 - €1500",
-        "photos": ["houtrot-kozijn-1.jpg", "houtrot-kozijn-2.jpg"]
+        "location": "Veendam",
+        "date": "2025-01-02",
+
+        "findings": [
+            {
+                "type": "Schade",
+                "subType": "Geweld",
+                "newDamage": true,
+                "requiresImmediateAction": true,
+                "description": "Winkelwagen uitgebrand in voortuin.",
+                "photos": ["uitgebrande-winkelwagen-1.jpg", "uitgebrande-winkelwagen-2.jpg"]
+            },
+            {
+                "type": "Schade",
+                "subType": "Moedwillig",
+                "newDamage": true,
+                "requiresImmediateAction": false,
+                "description": "Grafiti gespoten op buitendeur achterzijde.",
+                "photos": ["grafiti-buitendeur-1.jpg"]
+            },
+            {
+                "type": "Schade",
+                "subType": "Slijtage",
+                "newDamage": true,
+                "requiresImmediateAction": true,
+                "description": "Brievenbus zit vast en kan niet meer open.",
+                "photos": ["brievenbus-vast-1.jpg", "brievenbus-vast-2.jpg"]
+            },
+            {
+                "type": "Schade",
+                "subType": "Moedwillig",
+                "newDamage": true,
+                "requiresImmediateAction": true,
+                "description": "Voordeur opgeblazen met explosief vuurwerk.",
+                "photos": ["voordeur-opgeblazen-1.jpg"]
+            }
+        ]
     },
     {
-        "type": "Inspectie technische installatie",
-        "location": "Brussel",
-        "subType": "Luchtverversing",
-        "reportedMalfunctions": "Filters functioneren niet",
-        "testProcedurePdf": "dummy.pdf",
-        "approved": true,
-        "remarks": "Filters zijn vol en moeten vervangen worden.",
-        "photos": ["filters-vol-1.jpg"]
-    },
-    {
-        "type": "Inventarisering modificatie",
-        "existingSituationPdf": "dummy.pdf",
-        "location": "Appingedam",
-        "performedBy": "Huurder",
-        "description": "Gemeenschappelijke tafel verwijderen.",
-        "requiredAction": "Laten verwijderen",
-        "remarks": "Tafel heeft gevaarlijke punten.",
-        "photos": ["tafel-puntig-1.jpg"]
+        "location": "Delfzijl",
+        "date": "2024-07-26",
+
+        "findings": [
+            {
+                "type": "Schade",
+                "subType": "Geweld",
+                "newDamage": true,
+                "requiresImmediateAction": true,
+                "description": "Ruit achterdeur is ingegooid.",
+                "photos": ["ruit-achterdeur-ingegooid-1.jpg"]
+            },
+            {
+                "type": "Achterstallig onderhoud",
+                "subType": "Schilderwerk",
+                "requiresImmediateAction": false,
+                "costEstimate": "€0 - 500",
+                "photos": ["muren-geel-roken-1.jpg"]
+            },
+            {
+                "type": "Achterstallig onderhoud",
+                "subType": "Houtrot",
+                "requiresImmediateAction": false,
+                "costEstimate": "€500 - 1500",
+                "photos": ["houtrot-kozijn-binnen-1.jpg", "houtrot-kozijn-binnen-2.jpg"]
+            },
+            {
+                "type": "Achterstallig onderhoud",
+                "subType": "Elektra",
+                "requiresImmediateAction": true,
+                "costEstimate": "€0 - 500",
+                "photos": ["loshangende-kabels-1.jpg", "loshangende-kabels-2.jpg"]
+            },
+            {
+                "type": "Achterstallig onderhoud",
+                "subType": "Leidingwerk",
+                "requiresImmediateAction": true,
+                "costEstimate": "€1500+",
+                "photos": ["lekkage-radiator-1.jpg"]
+            }
+        ]
     }
 ]
