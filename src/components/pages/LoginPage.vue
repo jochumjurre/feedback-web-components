@@ -8,11 +8,11 @@
 
         <v-form class="mt-8">
             <v-text-field
-                label="Email"
-                type="email"
-                v-model="this.email"
-                :error="this.hasEmailError"
-                :error-messages="this.hasEmailError ? 'Vul je email in' : ''"
+                label="Gebruikersnaam"
+                type="text"
+                v-model="this.username"
+                :error="this.hasUsernameError"
+                :error-messages="this.hasUsernameError ? 'Vul je gebruikersnaam in' : ''"
                 class="mb-4"
             />
             <v-text-field
@@ -38,8 +38,8 @@
 export default {
     data() {
         return {
-            email: '',
-            hasEmailError: false,
+            username: '',
+            hasUsernameError: false,
             password: '',
             hasPasswordError: false,
         }
@@ -47,11 +47,11 @@ export default {
     methods: {
         // Loginfunctie met eenvoudige validatie van invoer
         login() {
-            this.hasEmailError = !this.email;
+            this.hasUsernameError = !this.username;
             this.hasPasswordError = !this.password;
 
             // Alleen doorgaan als er invoer is
-            if (!this.hasEmailError && !this.hasPasswordError) {
+            if (!this.hasUsernameError && !this.hasPasswordError) {
                 this.$router.push('/');
             }
         }

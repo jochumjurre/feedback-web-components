@@ -14,7 +14,7 @@
                 target="_blank"
                 class="rounded hover:bg-grey-lighten-4"
             >
-            <v-row align="center" class="w-100">
+            <v-row class="w-100">
                 <v-col cols="11">
                     <v-icon color="red" start class="mr-2">mdi-file-pdf-box</v-icon>
                     {{ doc.name }}
