@@ -1,13 +1,15 @@
 import axios from 'axios';
 
 class InspectionService {
-    load(useOnline = true) {
+    async load(useOnline = true) {
         if (useOnline) {
-            return axios.get('https://raw.githubusercontent.com/jochumjurre/feedback-web-components/refs/heads/main/db.json');
+            const response = await axios.get('https://raw.githubusercontent.com/jochumjurre/feedback-web-components/refs/heads/main/db.json');
+            return response.data;
         } else {
-            return import('../../db.json');
+            const data = await import('../../db.json');
+            return data.default;
         }
     }
 }
 
-export default new InspectionService
+export default new InspectionService();

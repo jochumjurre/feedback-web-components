@@ -26,11 +26,11 @@
                 </v-app-bar-title>
             </router-link>
             <div>
-                <v-btn icon>
-                    <v-icon>mdi-bell</v-icon>
+                <v-btn to="/login" router icon>
+                    <v-icon>mdi-login</v-icon>
                 </v-btn>
-                <v-btn icon>
-                    <v-icon>mdi-cog</v-icon>
+                <v-btn to="/settings" router icon>
+                    <v-icon>mdi-cog-outline</v-icon>
                 </v-btn>
             </div>
         </div>

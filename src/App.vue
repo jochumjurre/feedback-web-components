@@ -1,9 +1,9 @@
 <template>
-    <v-app class="bg-white pt-12 mb-16">
+    <v-app class="pt-12 mb-16 bg-transparent">
         <TheStatusBar />
-        <TheMainHeader />
+        <TheHeaderNavigation />
         <v-container>
-            <!-- Use Vuetify's <v-row> & <v-col> to achieve a responsive content area -->
+            <!-- Gebruik van Vuetify's <v-row> & <v-col> componenten om de pagina responsive te maken -->
             <v-row>
                 <v-col cols="12" sm="8" md="6" lg="4" class="mx-auto mt-16">
                     <router-view />
@@ -16,15 +16,34 @@
 
 <script>
 import TheStatusBar from '@/components/outline/TheStatusBar.vue';
-import TheMainHeader from '@/components/outline/TheHeader.vue';
+import TheHeaderNavigation from '@/components/outline/TheHeaderNavigation.vue';
 import TheFooterNavigation from '@/components/outline/TheFooterNavigation.vue';
+import { useSettingsStore } from '@/stores/settingsStore'
 
 export default {
-    name: 'app',
     components: {
         TheStatusBar,
-        TheMainHeader,
+        TheHeaderNavigation,
         TheFooterNavigation,
-    }
+    },
+    methods: {
+        updateAppBackground(isDark) {
+            document.body.classList.toggle('bg-grey-darken-2', isDark)
+            document.body.classList.toggle('bg-grey-lighten-5', !isDark)
+        }
+    },
+    computed: {
+        settingsStore() {
+            return useSettingsStore()
+        }
+    },
+    mounted() {
+        this.updateAppBackground(this.settingsStore.preferences.darkMode)
+    },
+    watch: {
+        'settingsStore.preferences.darkMode'(newValue) {
+            this.updateAppBackground(newValue)
+        }
+    },
 };
 </script>

@@ -27,22 +27,22 @@ export default {
             // Navigation buttons
             menuItems: [
                 {
-                    title: 'Inspections',
+                    title: 'Inspecties',
                     icon: 'mdi-bookmark-outline',
                     location: '/inspections'
                 },
                 {
-                    title: 'Completed',
+                    title: 'Uitgevoerde inspecties',
                     icon: 'mdi-check-circle-outline',
                     location: '/completed'
                 },
                 {
-                    title: 'Knowledge Base',
+                    title: 'Kennisbank',
                     icon: 'mdi-dots-grid',
                     location: '/docs'
                 },
                 {
-                    title: 'Settings',
+                    title: 'Instellingen',
                     icon: 'mdi-cog-outline',
                     location: '/settings'
                 },

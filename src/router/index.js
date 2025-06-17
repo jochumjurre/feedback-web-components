@@ -5,6 +5,7 @@ import InspectionsCompleted from '@/components/pages/InspectionsCompletedPage.vu
 import Settings from '@/components/pages/SettingsPage.vue';
 import KnowledgeBase from '@/components/pages/KnowledgeBasePage.vue';
 import NotFound from '@/components/pages/NotFoundPage.vue';
+import Login from '@/components/pages/LoginPage.vue';
 
 const routes = [
     {
@@ -33,7 +34,13 @@ const routes = [
         component: KnowledgeBase
     },
     {
+        path: '/login',
+        name: 'login',
+        component: Login
+    },
+    {
       path: "/:notFound",
+      name: 'not-found',
       component: NotFound,
     },
 ]

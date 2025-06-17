@@ -94,8 +94,8 @@ export default {
         }
     },
     mounted() {
-        InspectionService.load(false).then((response) => {
-            const inspections = response.default;
+        InspectionService.load(true).then((response) => {
+            const inspections = response;
 
             for (let inspection of inspections) {
                 const findings = inspection.findings.map(finding => new Finding(

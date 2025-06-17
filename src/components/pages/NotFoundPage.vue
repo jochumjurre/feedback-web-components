@@ -1,13 +1,11 @@
 <template>
-    <div class="text-center">
-        <p class="text-h4 text-blue-grey-lighten-1 mt-16 mb-4">Oops!</p>
-        <h1 class="text-h2">404 NOT FOUND!</h1>
-        <v-btn variant="tonal" class="mt-8">
-            <router-link :to="'/'" class="navigation-card">
-                <p>Return Home</p>
-            </router-link>
+    <v-card class="px-4 py-12 text-center">
+        <p class="text-h6 text-blue-grey-lighten-1">Oeps!</p>
+        <h1 class="text-h4">404: Pagina niet gevonden!</h1>
+        <v-btn variant="tonal" to="/" router text class="mt-8">
+            <p>Return Home</p>
         </v-btn>
-    </div>
+    </v-card>
 </template>
 
 <script>
@@ -15,13 +13,3 @@ export default {
 
 }
 </script>
-
-<style>
-    .navigation-card {
-        text-decoration: none;
-        color: black;
-    }
-    .navigation-card:hover {
-        text-decoration: underline;
-    }
-</style>

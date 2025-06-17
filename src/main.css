@@ -1,8 +1,19 @@
-
 .router-link {
     text-decoration: none;
 }
 .router-link:hover {
     text-decoration: underline;
     text-decoration-color: black;
+}
+.navigation {
+    color: black;
+    text-decoration: none;
+    padding-inline: .75rem;
+    opacity: 80%;
+}
+.navigation:hover {
+    opacity: 100%;
+}
+.navigation:hover .v-card-title {
+    text-decoration: underline;
 }
