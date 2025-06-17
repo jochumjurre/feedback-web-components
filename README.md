@@ -1,79 +1,24 @@
-# Vuetify (Default)
 
-This is the official scaffolding tool for Vuetify, designed to give you a head start in building your new Vuetify application. It sets up a base template with all the necessary configurations and standard directory structure, enabling you to begin development without the hassle of setting up the project from scratch.
+# Eindopdracht Front-End Frameworks
+ **Door Jochum Beerepoot (17 juni 2025)**
 
-## ❗️ Important Links
+## Het proces
 
-- 📄 [Docs](https://vuetifyjs.com/)
-- 🚨 [Issues](https://issues.vuetifyjs.com/)
-- 🏬 [Store](https://store.vuetifyjs.com/)
-- 🎮 [Playground](https://play.vuetifyjs.com/)
-- 💬 [Discord](https://community.vuetifyjs.com)
+De afgelopen maanden heb ik aan dit project gewerkt, eerst via de feedbackopdrachten uit eerdere hoofdstukken en de afgelopen dagen ten behoeve van de eindopdracht. Door de feedbackopdrachten te maken had ik het grootste deel van de code al klaar. Gedurende het maken van deze opdrachten heb ik waardevolle tips gekregen, zo heb ik onder andere van tevoren nog mijn JSON structuur voor de inspecties kunnen aanpassen. De afgelopen dagen heb ik heb onder andere nog gewerkt aan het toevoegen van extra pagina's en het toevoegen van de store (of eigenlijk 2 stores voor instellingen van de gebruiker & inspecties). Daardoor worden nu netjes gegevens opgehaald via de service, deze gaan naar de store en deze geeft de gegevens door aan de componenten.
 
-## 💿 Install
+## Aanvullende opmerkingen en verantwoording
+Bij het maken van deze opdracht ben ik alert geweest op het volgen van de eerder geleerde best practises. Ik heb geprobeerd om code te schrijven die voor anderen eenvoudig te begrijpen is. Ook heb ik opmerkingen in de code geplaatst, voornamelijk in de JavaScript, zodat ook het doel van de code duidelijk is. Ik zal nu hieronder verantwoorden hoe ik mij op **toegankelijkheid**, **gebruiksvriendelijkheid** en **veiligheid** heb gericht.
 
-Set up your project using your preferred package manager. Use the corresponding command to install the dependencies:
+### Toegankelijkheid
+De applicatie is geschikt voor alle schermformaten, van mobiel tot desktop, zodat iedereen hem makkelijk kan gebruiken. Er is gekozen voor een component library die goed werkt met touchscreens, zodat je de app ook onderweg kunt gebruiken.
 
-| Package Manager                                                | Command        |
-|---------------------------------------------------------------|----------------|
-| [yarn](https://yarnpkg.com/getting-started)                   | `yarn install` |
-| [npm](https://docs.npmjs.com/cli/v7/commands/npm-install)     | `npm install`  |
-| [pnpm](https://pnpm.io/installation)                          | `pnpm install` |
-| [bun](https://bun.sh/#getting-started)                        | `bun install`  |
+De app voldoet aan de WCAG 2.1 richtlijnen, niveau A. Je kunt ermee navigeren met het toetsenbord, afbeeldingen hebben alternatieve tekst, formulieren zijn duidelijk gelabeld en de HTML is semantisch opgebouwd. Dit maakt het eenvoudig te gebruiken met screenreaders en andere hulpmiddelen. Ook is er voldoende contrast tussen tekst en achtergrond, zodat mensen met een visuele beperking geen problemen hebben met de kleuren (deze voldoet zelfs aan de strengere WCAG AAA-contrasttest).
 
-After completing the installation, your environment is ready for Vuetify development.
+![enter image description here](https://img001.prntscr.com/file/img001/IaW1kyVtQsazK-PJBjwHog.png)
 
-## ✨ Features
+### Gebruiksvriendelijkheid
+Met mijn achtergrond als UX-designer heb ik ervoor gezorgd dat de app gebruiksvriendelijk werkt. Ik heb rekening gehouden dat mensen de app ook op hun telefoon gebruiken. Daarom staat er op elke pagina een terugknop, zodat je makkelijk kunt teruggaan naar de vorige schermen. Ook heb ik gebruik gemaakt van herkenbare knoppen, logische informatie-indeling en duidelijke icoontjes, zodat de applicatie logisch en makkelijk te begrijpen is.
 
-- 🖼️ **Optimized Front-End Stack**: Leverage the latest Vue 3 and Vuetify 3 for a modern, reactive UI development experience. [Vue 3](https://v3.vuejs.org/) | [Vuetify 3](https://vuetifyjs.com/en/)
-- 🗃️ **State Management**: Integrated with [Pinia](https://pinia.vuejs.org/), the intuitive, modular state management solution for Vue.
-- 🚦 **Routing and Layouts**: Utilizes Vue Router for SPA navigation and vite-plugin-vue-layouts for organizing Vue file layouts. [Vue Router](https://router.vuejs.org/) | [vite-plugin-vue-layouts](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
-- ⚡ **Next-Gen Tooling**: Powered by Vite, experience fast cold starts and instant HMR (Hot Module Replacement). [Vite](https://vitejs.dev/)
-- 🧩 **Automated Component Importing**: Streamline your workflow with unplugin-vue-components, automatically importing components as you use them. [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)
+### Veiligheid
+In mijn code heb ik gelet op basisveiligheid. Ik maak gebruik van design-patterns om de code overzichtelijk en veilig te houden. Ik probeer code zo te schrijven dat gegevens maar op één plek in de codebase voorkomen en werk met stores zodat er één waarheid is waaruit de componenten gegevens kunnen aflezen (of naartoe kunnen schrijven). Natuurlijk blijft er wel ruimte voor verbetering, iets waar ik nog weinig kennis over heb is hoe er in applicaties met gebruikersgegevens omgegaan wordt. De variabelen hiervoor staan, inclusief de wachtwoorden, nu nog tijdelijk in de code. Ongetwijfeld als er een back-end op de applicatie aangesloten zou zijn dat dit anders zou gaan.
 
-These features are curated to provide a seamless development experience from setup to deployment, ensuring that your Vuetify application is both powerful and maintainable.
-
-## 💡 Usage
-
-This section covers how to start the development server and build your project for production.
-
-### Starting the Development Server
-
-To start the development server with hot-reload, run the following command. The server will be accessible at [http://localhost:3000](http://localhost:3000):
-
-```bash
-yarn dev
-```
-
-(Repeat for npm, pnpm, and bun with respective commands.)
-
-> Add NODE_OPTIONS='--no-warnings' to suppress the JSON import warnings that happen as part of the Vuetify import mapping. If you are on Node [v21.3.0](https://nodejs.org/en/blog/release/v21.3.0) or higher, you can change this to NODE_OPTIONS='--disable-warning=5401'. If you don't mind the warning, you can remove this from your package.json dev script.
-
-### Building for Production
-
-To build your project for production, use:
-
-```bash
-yarn build
-```
-
-(Repeat for npm, pnpm, and bun with respective commands.)
-
-Once the build process is completed, your application will be ready for deployment in a production environment.
-
-## 💪 Support Vuetify Development
-
-This project is built with [Vuetify](https://vuetifyjs.com/en/), a UI Library with a comprehensive collection of Vue components. Vuetify is an MIT licensed Open Source project that has been made possible due to the generous contributions by our [sponsors and backers](https://vuetifyjs.com/introduction/sponsors-and-backers/). If you are interested in supporting this project, please consider:
-
-- [Requesting Enterprise Support](https://support.vuetifyjs.com/)
-- [Sponsoring John on Github](https://github.com/users/johnleider/sponsorship)
-- [Sponsoring Kael on Github](https://github.com/users/kaelwd/sponsorship)
-- [Supporting the team on Open Collective](https://opencollective.com/vuetify)
-- [Becoming a sponsor on Patreon](https://www.patreon.com/vuetify)
-- [Becoming a subscriber on Tidelift](https://tidelift.com/subscription/npm/vuetify)
-- [Making a one-time donation with Paypal](https://paypal.me/vuetify)
-
-## 📑 License
-[MIT](http://opensource.org/licenses/MIT)
-
-Copyright (c) 2016-present Vuetify, LLC
