@@ -1,5 +1,5 @@
 <template>
-    <v-card class="rounded-lg pa-4 mt-12">
+    <v-card class="rounded-lg pa-4 mt-6">
         <router-link to="/" class="d-flex align-center navigation">
             <v-icon>mdi-chevron-left</v-icon>
             <v-card-title class="text-h5 mb-0 pa-0">Welkom terug!</v-card-title>
@@ -26,7 +26,7 @@
             <v-btn
                 color="primary"
                 class="mt-4"
-                @click="this.login()"
+                @click="login()"
             >
             Login
             </v-btn>

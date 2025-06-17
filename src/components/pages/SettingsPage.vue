@@ -1,5 +1,5 @@
 <template>
-    <v-card class="rounded-lg pa-4">
+    <v-card class="rounded-lg pa-4 mt-6">
         <router-link to="/" class="d-flex align-center navigation">
             <v-icon>mdi-chevron-left</v-icon>
             <v-card-title class="text-h5 mb-0 pa-0">Instellingen</v-card-title>
@@ -10,13 +10,13 @@
             <!-- Accountgegevens -->
             <v-text-field
                 label="Naam inspecteur"
-                v-model="localSettings.account.name"
+                v-model="this.localSettings.account.name"
                 outlined
                 class="mb-4"
             />
             <v-text-field
                 label="E-mail"
-                v-model="localSettings.account.email"
+                v-model="this.localSettings.account.email"
                 outlined
                 class="mb-4"
                 type="email"
@@ -25,7 +25,7 @@
             <!-- Avatar upload -->
             <v-file-input
                 label="Profielfoto uploaden"
-                v-model="localSettings.account.avatar"
+                v-model="this.localSettings.account.avatar"
                 accept="image/*"
                 outlined
                 class="mb-4"
@@ -41,8 +41,8 @@
                 outlined
                 class="mb-4"
                 autocomplete="new-password"
-                :error="hasError"
-                :error-messages="hasError ? 'De wachtwoorden komen niet overeen' : ''"
+                :error="this.hasPasswordError"
+                :error-messages="this.hasPasswordError ? 'De wachtwoorden komen niet overeen' : ''"
             />
             <v-text-field
                 label="Bevestig wachtwoord"
@@ -51,26 +51,26 @@
                 outlined
                 class="mb-4"
                 autocomplete="new-password"
-                :error="hasError"
-                :error-messages="hasError ? 'De wachtwoorden komen niet overeen' : ''"
+                :error="this.hasPasswordError"
+                :error-messages="this.hasPasswordError ? 'De wachtwoorden komen niet overeen' : ''"
             />
 
             <!-- Voorkeuren -->
             <v-switch
                 label="Donkere modus"
-                v-model="localSettings.preferences.darkMode"
+                v-model="this.localSettings.preferences.isDarkMode"
                 class="mb-4"
             />
             <v-switch
                 label="Meldingen tonen"
-                v-model="localSettings.preferences.notifications"
+                v-model="this.localSettings.preferences.notifications"
                 class="mb-4"
             />
             <v-switch
                 label="Geluid aan"
-                v-model="localSettings.preferences.sound"
+                v-model="this.localSettings.preferences.isSoundOn"
                 class="mb-4"
-                :disabled="!localSettings.preferences.notifications"
+                :disabled="!this.localSettings.preferences.notifications"
             />
 
             <v-btn color="primary" @click="saveSettings">Instellingen opslaan</v-btn>
@@ -96,9 +96,9 @@ export default {
                     passwordConfirm: '',
                 },
                 preferences: {
-                    darkMode: false,
+                    isDarkMode: false,
                     notifications: false,
-                    sound: false,
+                    isSoundOn: false,
                 },
             }
         }
@@ -108,14 +108,14 @@ export default {
         this.localSettings.account.name = this.settingsStore.account.name;
         this.localSettings.account.email = this.settingsStore.account.email;
         this.localSettings.account.avatar = this.settingsStore.account.avatar;
-        this.localSettings.preferences.darkMode = this.settingsStore.preferences.darkMode;
+        this.localSettings.preferences.isDarkMode = this.settingsStore.preferences.isDarkMode;
         this.localSettings.preferences.notifications = this.settingsStore.preferences.notifications;
-        this.localSettings.preferences.sound = this.settingsStore.preferences.sound;
+        this.localSettings.preferences.isSoundOn = this.settingsStore.preferences.isSoundOn;
     },
     methods: {
         saveSettings() {
             if (this.localSettings.account.password !== this.localSettings.account.passwordConfirm) {
-                this.hasError = true;
+                this.this.hasPasswordError = true;
                 this.localSettings.account.password = '';
                 this.localSettings.account.passwordConfirm = '';
                 return
@@ -134,9 +134,9 @@ export default {
                 this.settingsStore.account.password = this.localSettings.account.password;
             }
 
-            this.settingsStore.preferences.darkMode = this.localSettings.preferences.darkMode;
+            this.settingsStore.preferences.isDarkMode = this.localSettings.preferences.isDarkMode;
             this.settingsStore.preferences.notifications = this.localSettings.preferences.notifications;
-            this.settingsStore.preferences.sound = this.localSettings.preferences.sound;
+            this.settingsStore.preferences.isSoundOn = this.localSettings.preferences.isSoundOn;
 
             this.localSettings.account.password = '';
             this.localSettings.account.passwordConfirm = '';

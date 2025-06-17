@@ -1,14 +1,14 @@
 <template>
     <div>
         <InspectionSelector
-            :inspectionsList="inspectionsList"
-            v-model:selectedInspectionIndex="selectedInspectionIndex"
-            v-model:selectedFindingIndex="selectedFindingIndex"
+            :inspectionsList="this.inspectionsList"
+            v-model:selectedInspectionIndex="this.selectedInspectionIndex"
+            v-model:selectedFindingIndex="this.selectedFindingIndex"
         />
         <v-card v-if="activeFinding" class="mx-auto">
             <v-carousel
                 v-if="activeFinding.photos && activeFinding.photos.length"
-                v-model="carouselIndex"
+                v-model="this.carouselIndex"
                 :show-arrows="activeFinding.photos.length > 1"
                 :hide-delimiters="activeFinding.photos.length <= 1"
                 height="240px"
@@ -87,7 +87,7 @@ export default {
         }
     },
     watch: {
-        // Always start image carousel on first image.
+        // Start de afbeelding carousel in op de eerste afbeelding.
         selectedInspectionIndex() {
             this.carouselIndex = 0;
             this.selectedFindingIndex = 0;
@@ -125,13 +125,13 @@ export default {
         });
     },
     methods: {
-        // Return local URL of picture
+        // Ontvang lokale URL van afbeelding
         getPhotoUrl(filename) {
             return `/images/${filename}`;
         },
-        // Return local url of PDF document
+        // Ontvang lokale URL van PDF document
         getPdfUrl(filename) {
-            // Check if there's a valid filename
+            // Controleer of de bestandsnaam geldig is
             if (!filename) return '';
 
             return new URL(`../../assets/documents/${filename}`, import.meta.url).href;

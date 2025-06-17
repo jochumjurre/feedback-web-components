@@ -12,6 +12,8 @@ export const useInspectionsStore = defineStore('inspections', {
         async loadInspections(useOnline = true) {
             try {
                 const response = useOnline ? await InspectionService.load(true) : await InspectionService.load(false)
+                
+                // response.data bij axios, anders response zelf
                 const data = response.data || response
                 this.setInspections(data)
             } catch (error) {

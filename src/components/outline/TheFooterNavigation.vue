@@ -21,3 +21,9 @@
         </v-btn>
     </v-bottom-navigation>
 </template>
+
+<script>
+export default {
+
+}
+</script>

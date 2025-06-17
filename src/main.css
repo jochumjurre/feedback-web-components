@@ -3,7 +3,7 @@
 }
 .router-link:hover {
     text-decoration: underline;
-    text-decoration-color: black;
+    text-decoration-color: white;
 }
 .navigation {
     color: black;
@@ -16,4 +16,8 @@
 }
 .navigation:hover .v-card-title {
     text-decoration: underline;
+}
+.navigation-title {
+    color: white;
+    text-decoration: none;
 }

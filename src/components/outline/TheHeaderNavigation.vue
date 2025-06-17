@@ -38,12 +38,7 @@
 </template>
 
 <script>
-
-</script>
-
-<style>
-.navigation-title {
-    color: white;
-    text-decoration: none;
+export default {
+    
 }
-</style>
+</script>

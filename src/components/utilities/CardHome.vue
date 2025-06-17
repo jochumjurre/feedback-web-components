@@ -1,9 +1,9 @@
 <template>
     <router-link
-        :class="isHovered ? 'elevation-4' : 'elevation-2'"
+        :class="this.isHovered ? 'elevation-4' : 'elevation-2'"
         :to="locationUrl"
-        @mouseover="isHovered = true"
-        @mouseleave="isHovered = false"
+        @mouseover="this.isHovered = true"
+        @mouseleave="this.isHovered = false"
         class="d-flex flex-column ga-4 align-center justify-center pt-8 pb-8 w-100 border rounded-lg bg-white text-center navigation-card"
     >
         <v-icon size="x-large">{{ prependIcon }}</v-icon>

@@ -1,7 +1,7 @@
 <template>
     <v-row class="mt-16 mb-8">
         <v-col
-            v-for="(item) in menuItems"
+            v-for="(item) in this.menuItems"
             :key="item.title"
             cols="6"
         >

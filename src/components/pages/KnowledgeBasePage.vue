@@ -1,5 +1,5 @@
 <template>
-    <v-card class="pa-4">
+    <v-card class="rounded-lg pa-4 mt-6">
         <router-link to="/" class="d-flex align-center navigation">
             <v-icon>mdi-chevron-left</v-icon>
             <v-card-title class="text-h5 mb-0 pa-0">Kennisbank</v-card-title>
@@ -8,7 +8,7 @@
 
         <v-list density="comfortable" nav>
             <v-list-item
-                v-for="doc in documents"
+                v-for="doc in this.documents"
                 :key="doc.name"
                 :href="doc.path"
                 target="_blank"

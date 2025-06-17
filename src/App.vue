@@ -19,6 +19,7 @@ import TheStatusBar from '@/components/outline/TheStatusBar.vue';
 import TheHeaderNavigation from '@/components/outline/TheHeaderNavigation.vue';
 import TheFooterNavigation from '@/components/outline/TheFooterNavigation.vue';
 import { useSettingsStore } from '@/stores/settingsStore'
+import { useInspectionsStore } from '@/stores/inspectionsStore'
 
 export default {
     components: {
@@ -38,10 +39,12 @@ export default {
         }
     },
     mounted() {
-        this.updateAppBackground(this.settingsStore.preferences.darkMode)
+        this.updateAppBackground(this.settingsStore.preferences.isDarkMode)
+        const store = useInspectionsStore()
+        store.loadInspections()
     },
     watch: {
-        'settingsStore.preferences.darkMode'(newValue) {
+        'settingsStore.preferences.isDarkMode'(newValue) {
             this.updateAppBackground(newValue)
         }
     },
