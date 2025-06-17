@@ -24,27 +24,27 @@ export default {
     },
     data() {
         return {
-            // Navigation buttons
+            // Navigatieknoppen
             menuItems: [
                 {
                     title: 'Inspecties',
                     icon: 'mdi-bookmark-outline',
-                    location: '/inspections'
+                    location: '/inspecties'
                 },
                 {
-                    title: 'Uitgevoerde inspecties',
+                    title: 'Uitgevoerde Inspecties',
                     icon: 'mdi-check-circle-outline',
-                    location: '/completed'
+                    location: '/uitgevoerd'
                 },
                 {
                     title: 'Kennisbank',
                     icon: 'mdi-dots-grid',
-                    location: '/docs'
+                    location: '/kennisbank'
                 },
                 {
                     title: 'Instellingen',
                     icon: 'mdi-cog-outline',
-                    location: '/settings'
+                    location: '/instellingen'
                 },
             ],
         };

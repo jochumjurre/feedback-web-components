@@ -32,11 +32,24 @@
 export default {
     data() {
         return {
+            // Lijst met referentiedocumenten
             documents: [
-                { name: 'Inspectierichtlijnen.pdf', path: '/assets/documents/dummy.pdf' },
-                { name: 'Veiligheidsnormen.pdf', path: '/assets/documents/dummy2.pdf' },
-                { name: 'Procedure vochtcontrole.pdf', path: '/assets/documents/dummy3.pdf' },
-                { name: 'Constructieveiligheidstest.pdf', path: '/assets/documents/dummy4.pdf' }
+                {
+                    name: 'Inspectierichtlijnen.pdf',
+                    path: '/assets/documents/dummy.pdf'
+                },
+                {
+                    name: 'Veiligheidsnormen.pdf',
+                    path: '/assets/documents/dummy2.pdf'
+                },
+                {
+                    name: 'Procedure vochtcontrole.pdf',
+                    path: '/assets/documents/dummy3.pdf'
+                },
+                {
+                    name: 'Constructieveiligheidstest.pdf',
+                    path: '/assets/documents/dummy4.pdf'
+                }
             ]
         }
     }

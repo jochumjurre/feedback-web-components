@@ -45,11 +45,12 @@ export default {
         }
     },
     methods: {
-        // Probeer in te loggen (of toon foutmeldingen als er geen gegevens zijn ingevuld)
+        // Loginfunctie met eenvoudige validatie van invoer
         login() {
             this.hasEmailError = !this.email;
             this.hasPasswordError = !this.password;
 
+            // Alleen doorgaan als er invoer is
             if (!this.hasEmailError && !this.hasPasswordError) {
                 this.$router.push('/');
             }

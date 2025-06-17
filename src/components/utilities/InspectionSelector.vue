@@ -34,17 +34,17 @@
 <script>
 export default {
     props: {
-        // Lijst van inspecties (doorgegeven vanuit het InspectionDisplay-component).
+        // Ontvangen lijst van INSPECTIES (uit het 'InspectionDisplay.vue'-component)
         inspectionsList: {
             type: Array,
             required: true,
         },
-        // Geselecteerde inspectie index (doorgegeven vanuit het InspectionDisplay-component).
+        // Ontvangen index van geselecteerde INSPECTIE (uit het 'InspectionDisplay.vue'-component)
         selectedInspectionIndex: {
             type: Number,
             default: null,
         },
-        // Geselecteerde waarneming uit inspectie (doorgegeven vanuit het InspectionDisplay-component).
+        // Ontvangen index van geselecteerde BEVINDING (uit het 'InspectionDisplay.vue'-component)
         selectedFindingIndex: {
             type: Number,
             default: 0,
@@ -52,34 +52,37 @@ export default {
     },
     computed: {
         modelValue: {
-            // Ontvang index van geselecteerde inspectie.
+            // Ophalen van geselecteerde INSPECTIE index
             get() {
                 return this.selectedInspectionIndex;
             },
-            // Wijzig het InspectionDisplay-component met de nieuwe index.
+            // Wijzigen van geselecteerde INSPECTIE index
             set(newVal) {
                 this.$emit('update:selectedInspectionIndex', newVal);
             },
         },
-        // Sorteer versie van inspectionsList (op datum aflopend).
+        // Sorteert INSPECTIES aflopend op datum
         sortedInspections() {
             return [...this.inspectionsList].sort((a, b) => new Date(b.date) - new Date(a.date));
         },
+        // BEVINDINGEN van de geselecteerde INSPECTIE ophalen
         activeFindings() {
             const selected = this.inspectionsList[this.selectedInspectionIndex];
             return selected ? selected.findings || [] : [];
         },
         selectedFindingIndexModel: {
+            // Ophalen van geselecteerde BEVINDING index
             get() {
                 return this.selectedFindingIndex;
             },
+            // Wijzigen van geselecteerde BEVINDING index
             set(value) {
                 this.$emit('update:selectedFindingIndex', value);
             }
         },
     },
     mounted() {
-        // Stel de focus standaard op de eerste inspectie, als er geen andere inspectie is geselecteerd.
+        // Standaard eerste INSPECTIE selecteren als niets gekozen is
         if (this.selectedInspectionIndex == null && this.inspectionsList.length > 0) {
             this.$emit('update:selectedInspectionIndex', 0);
         }

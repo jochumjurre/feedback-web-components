@@ -29,7 +29,7 @@
                 <v-btn to="/login" router icon>
                     <v-icon>mdi-login</v-icon>
                 </v-btn>
-                <v-btn to="/settings" router icon>
+                <v-btn to="/instellingen" router icon>
                     <v-icon>mdi-cog-outline</v-icon>
                 </v-btn>
             </div>

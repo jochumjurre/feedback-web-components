@@ -20,7 +20,6 @@ export default {
         },
         prependIcon: {
             type: String,
-            required: false,
             default: 'mdi-bell',
         },
         locationUrl: {

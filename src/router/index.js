@@ -14,23 +14,23 @@ const routes = [
         component: HomePage
     },
     {
-        path: '/inspections',
-        name: 'inspections-open',
+        path: '/inspecties',
+        name: 'inspecties',
         component: InspectionsOpen
     },
     {
-        path: '/completed',
-        name: 'inspections-completed',
+        path: '/uitgevoerd',
+        name: 'uitgevoerd',
         component: InspectionsCompleted
     },
     {
-        path: '/settings',
-        name: 'settings',
+        path: '/instellingen',
+        name: 'instellingen',
         component: Settings
     },
     {
-        path: '/docs',
-        name: 'knowledge-base',
+        path: '/kennisbank',
+        name: 'kennisbank',
         component: KnowledgeBase
     },
     {

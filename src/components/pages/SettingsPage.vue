@@ -104,6 +104,7 @@ export default {
         }
     },
     created() {
+        // Pinia store instellen en lokale variabelen vullen met gegevens uit de store.
         this.settingsStore = useSettingsStore()
         this.localSettings.account.name = this.settingsStore.account.name;
         this.localSettings.account.email = this.settingsStore.account.email;
@@ -114,6 +115,7 @@ export default {
     },
     methods: {
         saveSettings() {
+            // Controleer of wachtwoorden overeenkomen
             if (this.localSettings.account.password !== this.localSettings.account.passwordConfirm) {
                 this.this.hasPasswordError = true;
                 this.localSettings.account.password = '';
@@ -121,23 +123,24 @@ export default {
                 return
             }
 
+            // Verberg bevestiging na 2 seconden
             this.hasSavedSettings = true;
             setTimeout(()=>{
                 this.hasSavedSettings = false;
             }, 2000);
 
+            // Instellingen doorgeven aan de store
             this.settingsStore.account.name = this.localSettings.account.name;
             this.settingsStore.account.email = this.localSettings.account.email;
             this.settingsStore.account.avatar = this.localSettings.account.avatar;
-            
             if (this.localSettings.account.password) {
                 this.settingsStore.account.password = this.localSettings.account.password;
             }
-
             this.settingsStore.preferences.isDarkMode = this.localSettings.preferences.isDarkMode;
             this.settingsStore.preferences.notifications = this.localSettings.preferences.notifications;
             this.settingsStore.preferences.isSoundOn = this.localSettings.preferences.isSoundOn;
-
+            
+            // Wachtwoordvelden leegmaken na opslaan
             this.localSettings.account.password = '';
             this.localSettings.account.passwordConfirm = '';
         }
