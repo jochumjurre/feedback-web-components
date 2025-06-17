@@ -8,7 +8,7 @@
     >
         <v-radio
             v-for="(inspection, sortedIndex) in sortedInspections"
-            :key="inspection.id || sortedIndex"
+            :key="sortedIndex"
             :label="`${inspection.location} (${inspection.getDate()})`"
             :value="inspectionsList.findIndex(i => i === inspection)"
         />

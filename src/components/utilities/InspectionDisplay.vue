@@ -67,8 +67,6 @@ import Finding from '@/Finding';
 export default {
     components: {
         InspectionSelector,
-        InspectionService,
-        Inspection,
     },
     data() {
         return {
@@ -90,7 +88,7 @@ export default {
     },
     watch: {
         // Always start image carousel on first image.
-        selectedInspectionIndex(newVal) {
+        selectedInspectionIndex() {
             this.carouselIndex = 0;
             this.selectedFindingIndex = 0;
         }

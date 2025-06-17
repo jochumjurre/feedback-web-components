@@ -1,7 +1,7 @@
 <template>
     <v-app class="bg-white pt-12 mb-16">
-        <StatusBar />
-        <MainHeader />
+        <TheStatusBar />
+        <TheMainHeader />
         <v-container>
             <!-- Use Vuetify's <v-row> & <v-col> to achieve a responsive content area -->
             <v-row>
@@ -10,21 +10,21 @@
                 </v-col>
             </v-row>
         </v-container>
-        <BottomNavigation />
+        <TheFooterNavigation />
     </v-app>
 </template>
 
 <script>
-import StatusBar from './components/outline/StatusBar.vue';
-import MainHeader from '@/components/outline/MainHeader.vue';
-import BottomNavigation from '@/components/outline/BottomNavigation.vue';
+import TheStatusBar from '@/components/outline/TheStatusBar.vue';
+import TheMainHeader from '@/components/outline/TheHeader.vue';
+import TheFooterNavigation from '@/components/outline/TheFooterNavigation.vue';
 
 export default {
     name: 'app',
     components: {
-        StatusBar,
-        MainHeader,
-        BottomNavigation,
+        TheStatusBar,
+        TheMainHeader,
+        TheFooterNavigation,
     }
 };
 </script>

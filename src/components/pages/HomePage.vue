@@ -32,19 +32,19 @@ export default {
                     location: '/inspections'
                 },
                 {
-                    title: 'Knowledge base',
-                    icon: 'mdi-dots-grid',
-                    location: '/inspections'
-                },
-                {
                     title: 'Completed',
                     icon: 'mdi-check-circle-outline',
-                    location: '/inspections'
+                    location: '/completed'
+                },
+                {
+                    title: 'Knowledge Base',
+                    icon: 'mdi-dots-grid',
+                    location: '/docs'
                 },
                 {
                     title: 'Settings',
                     icon: 'mdi-cog-outline',
-                    location: '/inspections'
+                    location: '/settings'
                 },
             ],
         };

@@ -1,18 +1,41 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeNavigation from '@/components/pages/HomeNavigation.vue';
-import Inspections from '@/components/utilities/InspectionDisplay.vue';
+import HomePage from '@/components/pages/HomePage.vue';
+import InspectionsOpen from '@/components/pages/InspectionsOpenPage.vue';
+import InspectionsCompleted from '@/components/pages/InspectionsCompletedPage.vue';
+import Settings from '@/components/pages/SettingsPage.vue';
+import KnowledgeBase from '@/components/pages/KnowledgeBasePage.vue';
+import NotFound from '@/components/pages/NotFoundPage.vue';
 
 const routes = [
     {
         path: '/',
         name: 'home',
-        component: HomeNavigation
+        component: HomePage
     },
     {
         path: '/inspections',
-        name: 'inspections',
-        component: Inspections
-    }
+        name: 'inspections-open',
+        component: InspectionsOpen
+    },
+    {
+        path: '/completed',
+        name: 'inspections-completed',
+        component: InspectionsCompleted
+    },
+    {
+        path: '/settings',
+        name: 'settings',
+        component: Settings
+    },
+    {
+        path: '/docs',
+        name: 'knowledge-base',
+        component: KnowledgeBase
+    },
+    {
+      path: "/:notFound",
+      component: NotFound,
+    },
 ]
 
 const router = createRouter({
