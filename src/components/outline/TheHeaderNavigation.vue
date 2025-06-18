@@ -8,8 +8,8 @@
         <div class="d-flex w-100 justify-space-between">
             <router-link
                 to="/"
-                class="d-flex align-center router-link"
-                style="width: fit-content;"
+                class="d-flex align-center"
+                style="width: fit-content; text-decoration: none;"
             >
                 <v-img
                     class="mx-2"
@@ -31,22 +31,16 @@
                     router
                     icon
                 >
-                    <v-icon>mdi-login</v-icon>
+                    <v-icon icon="mdi-login" />
                 </v-btn>
                 <v-btn
                     to="/instellingen"
                     router
                     icon
                 >
-                    <v-icon>mdi-cog-outline</v-icon>
+                    <v-icon icon="mdi-cog-outline" />
                 </v-btn>
             </div>
         </div>
     </v-app-bar>
 </template>
-
-<script>
-export default {
-    
-}
-</script>

@@ -6,6 +6,7 @@ class InspectionService {
     async load(useOnline = true) {
         let rawData;
 
+        // Laad lijst in via Axios of gebruik lokaal bestand (voor testen)
         if (useOnline) {
             const response = await axios.get('https://raw.githubusercontent.com/jochumjurre/feedback-web-components/refs/heads/main/db.json');
             rawData = response.data;

@@ -1,16 +1,22 @@
 <template>
     <v-app class="pt-12 mb-16 bg-transparent">
-        <TheStatusBar />
-        <TheHeaderNavigation />
-        <v-container>
-            <!-- Gebruik van Vuetify's <v-row> & <v-col> componenten om de pagina responsive te maken -->
-            <v-row>
-                <v-col cols="12" sm="10" md="8" lg="4" class="mx-auto mt-16">
-                    <router-view />
-                </v-col>
-            </v-row>
-        </v-container>
-        <TheFooterNavigation />
+        <nav>
+            <TheStatusBar />
+            <TheHeaderNavigation />
+        </nav>
+        <main>
+            <v-container>
+                <!-- Gebruik van Vuetify's <v-row> & <v-col> componenten om de pagina responsive te maken -->
+                <v-row>
+                    <v-col cols="12" sm="10" md="8" lg="6" class="mx-auto mt-16">
+                        <router-view />
+                    </v-col>
+                </v-row>
+            </v-container>
+        </main>
+        <footer>
+            <TheFooterNavigation />
+        </footer>
     </v-app>
 </template>
 

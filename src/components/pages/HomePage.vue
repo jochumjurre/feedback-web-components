@@ -7,7 +7,7 @@
         >
             <CardHome
                 :title="item.title"
-                :prepend-icon="item.icon"
+                :prependIcon="item.icon"
                 :locationUrl="item.location"
                 color="secondary"
             />

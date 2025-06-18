@@ -4,9 +4,12 @@
         :to="locationUrl"
         @mouseover="this.isHovered = true"
         @mouseleave="this.isHovered = false"
-        class="d-flex flex-column ga-4 align-center justify-center pt-8 pb-8 w-100 border rounded-lg bg-white text-center navigation-card"
+        class="navigation-card d-flex flex-column ga-4 align-center justify-center pt-8 pb-8 w-100 border rounded-lg bg-white text-center"
     >
-        <v-icon size="x-large">{{ prependIcon }}</v-icon>
+        <v-icon
+            size="x-large"
+            :icon="prependIcon"
+        />
         <p>{{ title }}</p>
     </router-link>
 </template>
@@ -14,14 +17,17 @@
 <script>
 export default {
     props: {
+        // Titel die wordt weergegeven.
         title: {
             type: String,
             required: true,
         },
+        // Pictogram dat wordt weergegeven.
         prependIcon: {
             type: String,
             default: 'mdi-bell',
         },
+        // URL waar naartoe wordt doorgestuurd bij klikken op de kaart.
         locationUrl: {
             type: String,
             required: true,

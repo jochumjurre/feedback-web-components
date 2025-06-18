@@ -57,8 +57,8 @@ export default {
                 return this.selectedInspectionIndex;
             },
             // Wijzigen van geselecteerde INSPECTIE index
-            set(newVal) {
-                this.$emit('update:selectedInspectionIndex', newVal);
+            set(value) {
+                this.$emit('update:selectedInspectionIndex', value);
             },
         },
         // Sorteert INSPECTIES aflopend op datum
@@ -67,8 +67,8 @@ export default {
         },
         // BEVINDINGEN van de geselecteerde INSPECTIE ophalen
         activeFindings() {
-            const selected = this.inspectionsList[this.selectedInspectionIndex];
-            return selected ? selected.findings || [] : [];
+            const inspection = this.inspectionsList[this.selectedInspectionIndex];
+            return inspection?.findings || [];
         },
         selectedFindingIndexModel: {
             // Ophalen van geselecteerde BEVINDING index
@@ -83,7 +83,7 @@ export default {
     },
     mounted() {
         // Standaard eerste INSPECTIE selecteren als niets gekozen is
-        if (this.selectedInspectionIndex == null && this.inspectionsList.length > 0) {
+        if (this.selectedInspectionIndex == null && this.inspectionsList.length) {
             this.$emit('update:selectedInspectionIndex', 0);
         }
     },

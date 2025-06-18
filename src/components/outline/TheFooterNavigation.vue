@@ -6,7 +6,7 @@
             class="footer-button"
             text
         >
-            <v-icon>mdi-bookmark-outline</v-icon>
+            <v-icon icon="mdi-bookmark-outline" />
             <span>Inspecties</span>
         </v-btn>
 
@@ -16,7 +16,7 @@
             class="footer-button"
             text
         >
-            <v-icon>mdi-check-circle-outline</v-icon>
+            <v-icon icon="mdi-check-circle-outline" />
             <span>Uitgevoerd</span>
         </v-btn>
 
@@ -26,7 +26,7 @@
             class="footer-button"
             text
         >
-            <v-icon>mdi-dots-grid</v-icon>
+            <v-icon icon="mdi-dots-grid" />
             <span>Kennisbank</span>
         </v-btn>
 
@@ -36,13 +36,14 @@
             class="footer-button"
             text
         >
-            <v-icon>mdi-cog-outline</v-icon>
+            <v-icon icon="mdi-cog-outline" />
             <span>Instellingen</span>
         </v-btn>
     </v-bottom-navigation>
 </template>
 
-<script>
-export default {
+<style>
+.footer-button {
+  color: black;
 }
-</script>
+</style>
