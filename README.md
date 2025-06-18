@@ -1,6 +1,6 @@
 
 # Eindopdracht Front-End Frameworks
- **Door Jochum Beerepoot (17 juni 2025)**
+ **Door Jochum Beerepoot (18 juni 2025)**
 
 ## Het proces
 
@@ -21,4 +21,3 @@ Met mijn achtergrond als UX-designer heb ik ervoor gezorgd dat de app gebruiksvr
 
 ### Veiligheid
 In mijn code heb ik gelet op basisveiligheid. Ik maak gebruik van design-patterns om de code overzichtelijk en veilig te houden. Ik probeer code zo te schrijven dat gegevens maar op één plek in de codebase voorkomen en werk met stores zodat er één waarheid is waaruit de componenten gegevens kunnen aflezen (of naartoe kunnen schrijven). Natuurlijk blijft er wel ruimte voor verbetering, iets waar ik nog weinig kennis over heb is hoe er in applicaties met gebruikersgegevens omgegaan wordt. De variabelen hiervoor staan, inclusief de wachtwoorden, nu nog tijdelijk in de code. Ongetwijfeld als er een back-end op de applicatie aangesloten zou zijn dat dit anders zou gaan.
-
