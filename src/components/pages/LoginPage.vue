@@ -1,42 +1,43 @@
 <template>
-    <v-card class="rounded-lg pa-4 mt-6">
+    <section>
         <div v-if="!hasStartedAuth">
-            <router-link to="/" class="d-flex align-center navigation">
-                <v-icon icon="mdi-chevron-left" />
-                <v-card-title class="text-h5 mb-0 pa-0">Welkom terug!</v-card-title>
-            </router-link>
-            <v-card-subtitle class="mb-4 mt-2">Log in om verder te gaan met je account.</v-card-subtitle>
+            <ContentHeader
+                :title="'Welkom terug!'"
+                :description="'Log in om verder te gaan met je account.'"
+            />
 
-            <v-form class="mt-8">
-                <v-text-field
-                    v-model="this.username"
-                    label="Gebruikersnaam"
-                    type="text"
-                    :error="this.hasUsernameError"
-                    :error-messages="this.hasUsernameError ? 'Vul je gebruikersnaam in' : ''"
-                    class="mb-4"
-                />
-                <v-text-field
-                    v-model="this.password"
-                    label="Wachtwoord"
-                    type="password"
-                    :error="this.hasPasswordError"
-                    :error-messages="this.hasPasswordError ? 'Vul je wachtwoord in' : ''"
-                    class="mb-4"
-                />
-                <v-btn
-                    color="primary"
-                    class="mt-4"
-                    @click="login"
-                    block
-                >
-                    Login
-                </v-btn>
-            </v-form>
+            <v-card class="rounded-lg pa-4 mt-6">
+                <v-form>
+                    <v-text-field
+                        v-model="this.username"
+                        label="Gebruikersnaam"
+                        type="text"
+                        :error="this.hasUsernameError"
+                        :error-messages="this.hasUsernameError ? 'Vul je gebruikersnaam in' : ''"
+                        class="mb-4"
+                    />
+                    <v-text-field
+                        v-model="this.password"
+                        label="Wachtwoord"
+                        type="password"
+                        :error="this.hasPasswordError"
+                        :error-messages="this.hasPasswordError ? 'Vul je wachtwoord in' : ''"
+                        class="mb-4"
+                    />
+                    <v-btn
+                        color="primary"
+                        class="mt-4"
+                        @click="login"
+                        block
+                    >
+                        Login
+                    </v-btn>
+                </v-form>
+            </v-card>
         </div>
         <div v-else>
             <button
-                @click="goBack"
+                @click="this.hasStartedAuth = false"
                 class="d-flex align-center navigation no-style-btn"
             >
                 <v-icon icon="mdi-chevron-left" />
@@ -48,10 +49,10 @@
                 <v-text-field
                     v-model="this.authCode"
                     label="Authenticatiecode"
-                    maxlength="6"
-                    counter
                     type="text"
                     class="mb-4"
+                    maxlength="6"
+                    counter
                     :error="this.hasAuthError"
                     :error-messages="this.hasAuthError ? 'Vul de juiste authenticatiecode in' : ''"
                 />
@@ -80,11 +81,12 @@
                 Code is opnieuw verstuurd naar je e-mailadres.
             </v-alert>
         </div>
-    </v-card>
+    </section>
 </template>
 
 <script>
 export default {
+    name: 'LoginPage',
     data() {
         return {
             username: '',
@@ -108,17 +110,13 @@ export default {
         },
         // Authenticatiefunctie met eenvoudige validatie tegen lege invoer
         authenticate() {
-        this.hasAuthError = false;
-        if (this.authCode.length !== 6) {
-            this.hasAuthError = true;
-            return;
-        }
-        this.$router.push('/');
+            this.hasAuthError = false;
+            if (this.authCode.length !== 6) {
+                this.hasAuthError = true;
+                return;
+            }
+            this.$router.push('/');
         },
-        // Ga terugn naar de eerste stap van de login flow
-        goBack() {
-            this.hasStartedAuth = false;
-        }
     }
 }
 </script>

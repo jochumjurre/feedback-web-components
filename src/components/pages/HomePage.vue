@@ -9,7 +9,6 @@
                 :title="item.title"
                 :prependIcon="item.icon"
                 :locationUrl="item.location"
-                color="secondary"
             />
         </v-col>
     </v-row>
@@ -19,6 +18,7 @@
 import CardHome from '@/components/utilities/CardHome.vue';
 
 export default {
+    name: 'HomePage',
     components: {
         CardHome,
     },
@@ -27,24 +27,24 @@ export default {
             // Navigatieknoppen
             menuItems: [
                 {
-                    title: 'Inspecties',
+                    title: 'Openstaande Inspecties',
                     icon: 'mdi-bookmark-outline',
-                    location: '/inspecties'
+                    location: '/inspecties',
                 },
                 {
                     title: 'Uitgevoerde Inspecties',
                     icon: 'mdi-check-circle-outline',
-                    location: '/uitgevoerd'
+                    location: '/uitgevoerd',
                 },
                 {
                     title: 'Kennisbank',
                     icon: 'mdi-dots-grid',
-                    location: '/kennisbank'
+                    location: '/kennisbank',
                 },
                 {
                     title: 'Instellingen',
                     icon: 'mdi-cog-outline',
-                    location: '/instellingen'
+                    location: '/instellingen',
                 },
             ],
         };

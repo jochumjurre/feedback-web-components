@@ -16,6 +16,7 @@
 
 <script>
 export default {
+    name: 'CardHome',
     props: {
         // Titel die wordt weergegeven.
         title: {
@@ -31,7 +32,7 @@ export default {
         locationUrl: {
             type: String,
             required: true,
-        }
+        },
     },
     data() {
         return {

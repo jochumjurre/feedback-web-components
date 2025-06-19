@@ -11,3 +11,9 @@
         />
     </v-system-bar>
 </template>
+
+<script>
+export default {
+    name: 'TheStatusBar',
+}
+</script>

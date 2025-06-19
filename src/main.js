@@ -11,6 +11,7 @@ import { createPinia } from "pinia";
 
 // Components
 import App from './App.vue';
+import ContentHeader from '@/components/utilities/ContentHeader.vue'
 
 // Composables
 import { createApp } from 'vue'
@@ -20,10 +21,13 @@ import 'unfonts.css'
 
 // Pinia
 const pinia = createPinia();
-
 const app = createApp(App)
     .use(pinia)
 
 registerPlugins(app)
 app.use(router)
+
+// Registreren van globale componenten
+app.component('ContentHeader', ContentHeader)
+
 app.mount('#app')

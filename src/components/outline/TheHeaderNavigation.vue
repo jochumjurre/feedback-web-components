@@ -16,7 +16,6 @@
                     src="../../assets/logo-light.svg"
                     max-height="40"
                     max-width="40"
-                    contain
                 />
                 <v-app-bar-title
                     class="navigation-title"
@@ -28,14 +27,12 @@
             <div>
                 <v-btn
                     to="/login"
-                    router
                     icon
                 >
                     <v-icon icon="mdi-login" />
                 </v-btn>
                 <v-btn
                     to="/instellingen"
-                    router
                     icon
                 >
                     <v-icon icon="mdi-cog-outline" />
@@ -44,3 +41,9 @@
         </div>
     </v-app-bar>
 </template>
+
+<script>
+export default {
+    name: 'TheHeaderNavigation',
+}
+</script>

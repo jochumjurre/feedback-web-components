@@ -1,49 +1,46 @@
 <template>
-    <v-card class="rounded-lg pa-4 mt-6">
-        <router-link
-            to="/"
-            class="d-flex align-center navigation"
-        >
-            <v-icon icon="mdi-chevron-left" />
-            <v-card-title class="text-h5 mb-0 pa-0">Kennisbank</v-card-title>
-        </router-link>
-        <v-card-subtitle class="mb-4 mt-2">Referentiedocumenten van Real Estate Care voor woninginspecties.</v-card-subtitle>
-
-        <v-list
-            density="comfortable"
-            nav
-        >
-            <v-list-item
-                v-for="doc in this.documents"
-                :key="doc.name"
-                :href="doc.path"
-                target="_blank"
-                class="rounded hover:bg-grey-lighten-4"
-            >
-            <v-row class="w-100">
-                <v-col cols="11">
-                    <v-icon
-                        color="red"
-                        start
-                        class="mr-2"
-                        icon="mdi-file-pdf-box"
-                    />
-                    {{ doc.name }}
-                </v-col>
-                    <v-col cols="1" class="text-right">
-                    <v-icon icon="mdi-open-in-new" />
-                </v-col>
-            </v-row>
-            </v-list-item>
-        </v-list>
-    </v-card>
+    <section>
+        <ContentHeader
+            :title="'Kennisbank'"
+            :description="'Referentiedocumenten van Real Estate Care voor woninginspecties.'"
+        />
+        <v-card class="rounded-lg pa-4 mt-6">
+            <v-list>
+                <v-list-item
+                    v-for="document in this.documents"
+                    :key="document.name"
+                    :href="document.path"
+                    target="_blank"
+                    class="rounded hover:bg-grey-lighten-4"
+                >
+                    <v-row>
+                        <v-col cols="10">
+                            <v-icon
+                                color="red"
+                                class="mr-2"
+                                icon="mdi-file-pdf-box"
+                            />
+                            {{ document.name }}
+                        </v-col>
+                        <v-col
+                            cols="2"
+                            class="text-right"
+                        >
+                            <v-icon icon="mdi-open-in-new" />
+                        </v-col>
+                    </v-row>
+                </v-list-item>
+            </v-list>
+        </v-card>
+    </section>
 </template>
 
 <script>
 export default {
+    name: 'KnowledgeBasePage',
     data() {
         return {
-            // Lijst met referentiedocumenten
+            // Lijst met dummy referentiedocumenten
             documents: [
                 {
                     name: 'Inspectierichtlijnen.pdf',

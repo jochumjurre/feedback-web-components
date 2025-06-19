@@ -1,101 +1,93 @@
 <template>
-    <v-card class="rounded-lg pa-4 mt-6">
-        <router-link
-            to="/"
-            class="d-flex align-center navigation"
-        >
-            <v-icon icon="mdi-chevron-left" />
-            <v-card-title class="text-h5 mb-0 pa-0">Instellingen</v-card-title>
-        </router-link>
-        <v-card-subtitle class="mb-4 mt-2">Beheer je account en app-voorkeuren</v-card-subtitle>
+    <section>
+        <ContentHeader
+            :title="'Instellingen'"
+            :description="'Beheer je account en app-voorkeuren.'"
+        />
 
-        <v-form>
-            <!-- Accountgegevens -->
-            <v-text-field
-                v-model="this.localSettings.account.name"
-                label="Naam inspecteur"
-                outlined
-                class="mb-4"
-            />
-            <v-text-field
-                v-model="this.localSettings.account.email"
-                label="E-mail"
-                outlined
-                class="mb-4"
-                type="email"
-            />
+        <v-card class="rounded-lg pa-4 mt-6">
+            <v-form>
+                <!-- Accountgegevens -->
+                <v-text-field
+                    v-model="this.localSettings.account.name"
+                    label="Naam inspecteur"
+                    class="mb-4"
+                />
+                <v-text-field
+                    v-model="this.localSettings.account.email"
+                    label="E-mail"
+                    type="email"
+                    class="mb-4"
+                />
 
-            <!-- Avatar upload -->
-            <v-file-input
-                v-model="this.localSettings.account.avatar"
-                label="Profielfoto uploaden"
-                accept="image/*"
-                outlined
-                class="mb-4"
-                prepend-icon="mdi-camera"
-                show-size
-            />
+                <!-- Avatar upload -->
+                <v-file-input
+                    v-model="this.localSettings.account.avatar"
+                    label="Profielfoto uploaden"
+                    accept="image/*"
+                    class="mb-4"
+                    prepend-icon="mdi-camera"
+                    show-size
+                />
 
-            <!-- Wachtwoord wijzigen -->
-            <v-text-field
-                v-model="this.localSettings.account.password"
-                label="Nieuw wachtwoord"
-                type="password"
-                outlined
-                class="mb-4"
-                autocomplete="new-password"
-                :error="this.hasPasswordError"
-                :error-messages="this.hasPasswordError ? 'De wachtwoorden komen niet overeen' : ''"
-            />
-            <v-text-field
-                v-model="this.localSettings.account.passwordConfirm"
-                label="Bevestig wachtwoord"
-                type="password"
-                outlined
-                class="mb-4"
-                autocomplete="new-password"
-                :error="this.hasPasswordError"
-                :error-messages="this.hasPasswordError ? 'De wachtwoorden komen niet overeen' : ''"
-            />
+                <!-- Wachtwoord wijzigen -->
+                <v-text-field
+                    v-model="this.localSettings.account.password"
+                    label="Nieuw wachtwoord"
+                    type="password"
+                    class="mb-4"
+                    :error="this.hasPasswordError"
+                    :error-messages="this.hasPasswordError ? 'De wachtwoorden komen niet overeen' : ''"
+                />
+                <v-text-field
+                    v-model="this.localSettings.account.passwordConfirm"
+                    label="Bevestig wachtwoord"
+                    type="password"
+                    class="mb-4"
+                    :error="this.hasPasswordError"
+                    :error-messages="this.hasPasswordError ? 'De wachtwoorden komen niet overeen' : ''"
+                />
 
-            <!-- Voorkeuren -->
-            <v-switch
-                v-model="this.localSettings.preferences.isDarkMode"
-                label="Donkere modus"
-                class="mb-4"
-            />
-            <v-switch
-                v-model="this.localSettings.preferences.notifications"
-                label="Meldingen tonen"
-                class="mb-4"
-            />
-            <v-switch
-                v-model="this.localSettings.preferences.isSoundOn"
-                label="Geluid aan"
-                class="mb-4"
-                :disabled="!this.localSettings.preferences.notifications"
-            />
+                <!-- Voorkeuren -->
+                <v-switch
+                    v-model="this.localSettings.preferences.isDarkMode"
+                    label="Donkere modus"
+                    class="mb-4"
+                />
+                <v-switch
+                    v-model="this.localSettings.preferences.notifications"
+                    label="Meldingen tonen"
+                    class="mb-4"
+                />
+                <v-switch
+                    v-model="this.localSettings.preferences.isSoundOn"
+                    label="Geluid aan"
+                    class="mb-4"
+                    :disabled="!this.localSettings.preferences.notifications"
+                />
 
-            <v-btn
-                color="primary"
-                @click="saveSettings"
-            >
-                Instellingen opslaan
-            </v-btn>
-            <p
-                v-show="this.hasSavedSettings"
-                class="mt-2"
-            >
-                Instellingen opgeslagen!
-            </p>
-        </v-form>
-    </v-card>
+                <v-btn
+                    color="primary"
+                    @click="saveSettings"
+                >
+                    Instellingen opslaan
+                </v-btn>
+                <p
+                    v-show="this.hasSavedSettings"
+                    class="mt-2"
+                >
+                    Instellingen opgeslagen!
+                </p>
+            </v-form>
+        </v-card>
+    </section>
 </template>
 
 <script>
 import { useSettingsStore } from '@/stores/settingsStore.js'
 
 export default {
+    name: 'SettingsPage',
     data() {
         return {
             hasPasswordError: false,

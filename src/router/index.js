@@ -1,42 +1,48 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '@/components/pages/HomePage.vue';
-import InspectionsOpen from '@/components/pages/InspectionsOpenPage.vue';
-import InspectionsCompleted from '@/components/pages/InspectionsCompletedPage.vue';
+import InspectionsOpen from '@/components/pages/InspectionsTodoPage.vue';
+import InspectionsCompleted from '@/components/pages/InspectionsDonePage.vue';
 import Settings from '@/components/pages/SettingsPage.vue';
 import KnowledgeBase from '@/components/pages/KnowledgeBasePage.vue';
 import NotFound from '@/components/pages/NotFoundPage.vue';
 import Login from '@/components/pages/LoginPage.vue';
+import NewInspection from '@/components/pages/InspectionsFormPage.vue';
 
 const routes = [
     {
         path: '/',
         name: 'home',
-        component: HomePage
+        component: HomePage,
     },
     {
         path: '/inspecties',
         name: 'inspecties',
-        component: InspectionsOpen
+        component: InspectionsOpen,
     },
     {
         path: '/uitgevoerd',
         name: 'uitgevoerd',
-        component: InspectionsCompleted
+        component: InspectionsCompleted,
     },
     {
         path: '/instellingen',
         name: 'instellingen',
-        component: Settings
+        component: Settings,
     },
     {
         path: '/kennisbank',
         name: 'kennisbank',
-        component: KnowledgeBase
+        component: KnowledgeBase,
     },
     {
         path: '/login',
         name: 'login',
-        component: Login
+        component: Login,
+    },
+    {
+        path: '/opgeven',
+        name: 'nieuwe-inspectie',
+        component: NewInspection,
     },
     {
       path: "/:notFound",
