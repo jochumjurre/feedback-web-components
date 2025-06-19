@@ -75,7 +75,7 @@
                                 class="my-4"
                                 color="secondary"
                             >
-                                Voeg foto's toe
+                                Voeg foto(s) toe
                             </v-btn>
                         </v-card>
                         <v-btn
@@ -142,7 +142,7 @@
                                 class="my-4"
                                 color="secondary"
                             >
-                                Voeg foto's toe
+                                Voeg foto(s) toe
                             </v-btn>
                         </v-card>
                         <v-btn
@@ -205,24 +205,18 @@
                                     :value="false"
                                 />
                             </v-radio-group>
-                            <label class="block">Testprocedure:</label>
-                            <v-file-input
-                                @change="uploadPhotos"
-                                accept=".pdf"
-                                label="Voeg .pdf toe"
-                                class="mt-2"
-                            />
                             <v-textarea
                                 v-model="finding.remarks"
                                 label="Opmerkingen"
                             />
-                            <v-btn
-                                @click="uploadPhotos"
-                                class="my-4"
-                                color="secondary"
-                            >
-                                Voeg foto's toe
-                            </v-btn>
+                            <v-row class="pa-4" style="gap: 8px;">
+                                <v-btn color="secondary" @click="uploadPhotos">
+                                    Voeg foto(s) toe
+                                </v-btn>
+                                <v-btn color="secondary" @click="uploadPDF">
+                                    Voeg PDF toe
+                                </v-btn>
+                            </v-row>
                         </v-card>
                         <v-btn
                             @click="addInstallationFinding"
@@ -262,13 +256,6 @@
                                     <v-icon icon="mdi-close" />
                                 </v-btn>
                             </div>
-                            <label class="block">Bestaande situatie (.pdf):</label>
-                            <v-file-input
-                                @change="uploadPhotos"
-                                accept=".pdf"
-                                label="Voeg .pdf toe"
-                                class="mt-2"
-                            />
                             <v-select
                                 v-model="finding.performedBy"
                                 label="Uitgevoerd door"
@@ -287,13 +274,14 @@
                                 v-model="finding.remarks"
                                 label="Opmerkingen"
                             />
-                            <v-btn
-                                @click="uploadPhotos"
-                                class="my-4"
-                                color="secondary"
-                            >
-                                Voeg foto's toe
-                            </v-btn>
+                            <v-row class="pa-4" style="gap: 8px;">
+                                <v-btn color="secondary" @click="uploadPhotos">
+                                    Voeg foto(s) toe
+                                </v-btn>
+                                <v-btn color="secondary" @click="uploadPDF">
+                                    Voeg PDF toe
+                                </v-btn>
+                            </v-row>
                         </v-card>
                         <v-btn
                             @click="addModificationFinding"
@@ -306,12 +294,20 @@
                 </v-expansion-panel>
             </v-expansion-panels>
 
-        <v-btn class="mt-4" color="success" @click="submit">Opslaan en versturen</v-btn>
+        <v-btn
+            class="mt-4"
+            color="success"
+            @click="submit"
+            :disabled="!hasFindings"
+        >
+            Opslaan en versturen
+        </v-btn>
     </section>
 </template>
 
 <script>
 import Finding from '@/Finding.js'
+import { useInspectionsStore } from '@/stores/inspectionsStore.js'
 
 export default {
     name: 'InspectionsFormPage',
@@ -331,12 +327,26 @@ export default {
             performedBy: ['Huurder', 'Aannemer', 'Onbekend'],
             actionType: ['Accepteren', 'Laten keuren', 'Laten verwijderen', 'Laten aanpassen en keuren'],
 
+            // Tijdelijke opslag voor bevindingen
             report: {
                 damageFindings: [],
                 maintenanceFindings: [],
                 installationFindings: [],
                 modificationFindings: [],
-            }
+            },
+
+            // inspectionsStore
+            store: useInspectionsStore(),
+        }
+    },
+    computed: {
+        hasFindings() {
+            return (
+                this.report.damageFindings.length > 0 ||
+                this.report.maintenanceFindings.length > 0 ||
+                this.report.installationFindings.length > 0 ||
+                this.report.modificationFindings.length > 0
+            );
         }
     },
     watch: {
@@ -348,13 +358,13 @@ export default {
         }
     },
     methods: {
-        // 1. Schade
+        // 1. Schade Instantie
         addDamageFinding() {
             const newFinding = new Finding();
             newFinding.type = 'Schade';
             newFinding.subType = '';
-            newFinding.newDamage = null;
-            newFinding.requiresImmediateAction = null;
+            newFinding.newDamage = undefined;
+            newFinding.requiresImmediateAction = undefined;
             newFinding.description = '';
             this.report.damageFindings.push(newFinding);
         },
@@ -362,12 +372,12 @@ export default {
             this.report.damageFindings.splice(index, 1);
         },
 
-        // 2. Onderhoud
+        // 2. Onderhoud Instantie
         addMaintenanceFinding() {
             const newFinding = new Finding();
             newFinding.type = 'Achterstallig onderhoud';
             newFinding.subType = '';
-            newFinding.requiresImmediateAction = null;
+            newFinding.requiresImmediateAction = undefined;
             newFinding.costEstimate = '';
             this.report.maintenanceFindings.push(newFinding);
         },
@@ -375,14 +385,14 @@ export default {
             this.report.maintenanceFindings.splice(index, 1);
         },
 
-        // 3. Installatie
+        // 3. Installatie Instantie
         addInstallationFinding() {
             const newFinding = new Finding();
             newFinding.type = 'Inspectie technische installatie';
             newFinding.subType = '';
             newFinding.reportedMalfunctions = '';
             newFinding.testProcedurePdf = '';
-            newFinding.approved = null;
+            newFinding.approved = undefined;
             newFinding.remarks = '';
             this.report.installationFindings.push(newFinding);
         },
@@ -390,14 +400,14 @@ export default {
             this.report.installationFindings.splice(index, 1);
         },
 
-        // 4. Modificatie
+        // 4. Modificatie Instantie
         addModificationFinding() {
             const newFinding = new Finding();
             newFinding.type = 'Inventarisering modificatie';
             newFinding.existingSituationPdf = '';
             newFinding.performedBy = '';
             newFinding.description = '';
-            newFinding.requiredAction = null;
+            newFinding.requiredAction = '';
             newFinding.remarks = '';
             this.report.modificationFindings.push(newFinding);
         },
@@ -408,9 +418,30 @@ export default {
         uploadPhotos() {
             alert("Foto toevoegen (niet geïmplementeerd)");
         },
+        uploadPDF() {
+            alert("PDF toevoegen (niet geïmplementeerd)");
+        },
 
         submit() {
-            alert("Inspectie opgeslagen (nog niet geïmplementeerd)");
+            // Alle findings samenvoegen in één array
+            const allFindings = [
+                ...this.report.damageFindings,
+                ...this.report.maintenanceFindings,
+                ...this.report.installationFindings,
+                ...this.report.modificationFindings
+            ];
+
+            // Nieuw inspection instantie aanmaken
+            const inspection = {
+                date: new Date(this.$route.query.date),
+                location: this.$route.query.location,
+                findings: allFindings
+            };
+
+            // Nieuwe inspection toevoegen aan de store
+            this.store.addInspection(inspection);
+
+            this.$router.push('/inspecties');
         }
     }
 };

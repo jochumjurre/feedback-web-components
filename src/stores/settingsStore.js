@@ -15,6 +15,7 @@ export const useSettingsStore = defineStore('settings', {
         }
     }),
     getters: {
+        // Geef terug of darkmode ingeschakeld is
         isDarkMode(state) {
             return state.preferences.isDarkMode;
         },

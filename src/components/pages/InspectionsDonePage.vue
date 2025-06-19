@@ -14,7 +14,7 @@
                 <v-radio
                     v-for="(inspection, sortedIndex) in sortedInspections"
                     :key="sortedIndex"
-                    :label="`${inspection.location} (${inspection.getDate()})`"
+                    :label="`${inspection.location} (${new Date(inspection.date).toLocaleDateString('nl-NL')})`"
                     :value="store.inspections.findIndex(i => i === inspection)"
                 />
             </v-radio-group>
@@ -68,10 +68,10 @@
                     <v-icon icon="mdi-map-marker" />
                     {{ activeInspection.location }} -
                     <v-icon icon="mdi-calendar-blank" />
-                    {{ activeInspection.getDate() }}
+                    {{ new Date(activeInspection.date).toLocaleDateString('nl-NL') }}
                 </v-card-subtitle>
                 <v-card-text class="text-body-1">
-                    <p v-show="activeFinding.newDamage !== undefined">
+                    <p v-show="activeFinding.newDamage != undefined">
                         <span class="font-weight-medium">Nieuwe schade: </span>
                         <v-chip :color="activeFinding.newDamage ? 'success' : 'error'" dark>
                             {{ activeFinding.newDamage ? 'Ja' : 'Nee' }}
@@ -89,7 +89,7 @@
                         <span class="font-weight-medium">Gemelde storingen: </span>
                         {{ activeFinding.reportedMalfunctions }}
                     </p>
-                    <p v-show="activeFinding.requiresImmediateAction !== undefined">
+                    <p v-show="activeFinding.requiresImmediateAction != undefined">
                         <span class="font-weight-medium">Acute actie vereist: </span>
                         <v-chip :color="activeFinding.requiresImmediateAction ? 'success' : 'error'" dark>
                             {{ activeFinding.requiresImmediateAction ? 'Ja' : 'Nee' }}
@@ -107,7 +107,7 @@
                         <span class="font-weight-medium">Opmerkingen: </span>
                         {{ activeFinding.remarks }}
                     </p>
-                    <p v-show="activeFinding.approved !== undefined">
+                    <p v-show="activeFinding.approved != undefined">
                         <span class="font-weight-medium">Goedgekeurd: </span>
                         <v-chip :color="activeFinding.approved ? 'success' : 'error'" dark>
                             {{ activeFinding.approved ? 'Ja' : 'Nee' }}

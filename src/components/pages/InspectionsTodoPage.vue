@@ -11,7 +11,7 @@
 					:key="inspection.id"
 				>
 					<v-expansion-panel-title>
-						Uitvoeren op: {{ formatDate(inspection.date) }}
+						Uitvoeren op: {{ new Date(inspection.date).toLocaleDateString('nl-NL') }}
 					</v-expansion-panel-title>
 
 					<v-expansion-panel-text>
@@ -46,15 +46,6 @@ export default {
 			return [...this.store.inspections].sort(
 				(a, b) => new Date(a.date) - new Date(b.date)
 			);
-		},
-	},
-	methods: {
-		formatDate(dateStr) {
-			return new Date(dateStr).toLocaleDateString('nl-NL', {
-				year: 'numeric',
-				month: 'long',
-				day: 'numeric',
-			});
 		},
 	},
 };
