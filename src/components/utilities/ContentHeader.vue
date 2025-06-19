@@ -33,6 +33,6 @@ export default {
 
 <style>
 .v-card-subtitle {
-    padding-inline: 0;
+    padding-inline: 0!important;
 }
 </style>
